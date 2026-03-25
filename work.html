@@ -357,12 +357,70 @@ Test Pyramid:
   </div>
 
   <div class="detail-section">
+    <div class="detail-title">TC Design Methodology</div>
+    <ul class="detail-list">
+      <li><strong>11-Column TC 표준</strong> — 대분류/중분류/TC_ID/시나리오/사전조건/절차/기대결과/우선순위/자동화대상/품질특성(ISO 25010)/설계기법을 모든 TC에 필수 적용</li>
+      <li><strong>ISO/IEC 25010 품질 모델</strong> — 기능 적합성 · 성능 효율성 · 호환성 · 사용성 · 신뢰성 · 보안성 · 유지보수성 · 이식성, 8개 품질 특성 관점으로 TC 분류</li>
+      <li><strong>블랙박스 테스트 기법 5종</strong> — 동등분할(입력 범위 그룹화) · 경계값(경계 조건) · 결정 테이블(조건 조합) · 상태전이(상태 흐름) · 오류추정(경험 기반 결함 예측)</li>
+      <li><strong>BDD 스타일 (Given/When/Then)</strong> — When 절 2개 이상 액션 시 번호 순서 명시, Then 절은 반드시 관찰 가능한 형태로 기술 ("정상 동작" 같은 추상 표현 금지)</li>
+      <li><strong>Positive:Negative 비율</strong> — 1:1.5~2 기준, 엔드포인트당 Positive 최소 1건 + Negative(인증/파라미터) 2건 이상</li>
+      <li><strong>보안 TC 필수</strong> — 사용자 입력 받는 모든 API에 SQLi/XSS 검증 TC 포함</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">3-Perspective TC Framework</div>
+    <div class="arch-block">
+      <pre>
+┌─────────────────────────────────────────────────────────┐
+│                    TC 설계 3관점                          │
+│                                                          │
+│  ┌──────────────────┐  QA 관점 (50%)                     │
+│  │ Positive TC      │  사용자 시나리오 기반 기능 검증     │
+│  │ Negative TC      │  Happy / Exception / Alternative   │
+│  │ 경계값 / E2E     │  Path 균형                         │
+│  │ 보안 (SQLi/XSS)  │                                    │
+│  └──────────────────┘                                    │
+│                                                          │
+│  ┌──────────────────┐  BE Dev 관점 (30%)                 │
+│  │ Response 필드 검증│  API Contract 준수 확인            │
+│  │ 에러 응답 구조   │  401 vs 403 구분, Content-Type     │
+│  │ 응답 시간 검증   │  성능 기준 충족 확인               │
+│  └──────────────────┘                                    │
+│                                                          │
+│  ┌──────────────────┐  자동화 관점 (20%)                 │
+│  │ 데이터 독립성    │  하드코딩 금지, 동적 확보          │
+│  │ CUD 원복         │  테스트 후 원래 상태 복원          │
+│  │ 테스트 격리      │  TC 간 의존 없이 독립 실행         │
+│  │ Flaky 방지       │  timeout 허용, 조건부 검증         │
+│  └──────────────────┘                                    │
+└─────────────────────────────────────────────────────────┘
+
+우선순위 기반 자동화 전략:
+  P0 (Critical) → 100% 자동화 목표 → CI 매일 실행
+  P1 (High)     →  80% 자동화 목표 → CI 선택 실행
+  P2 (Medium)   →  50% 자동화 목표 → 수동 보완
+  P3 (Minor)    → 수동 테스트</pre>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">Environment Safety Design</div>
+    <ul class="detail-list">
+      <li><strong>Production 환경 CUD 차단</strong> — skipOnProd 가드 패턴으로 생성/수정/삭제 TC가 운영 환경에서 절대 실행되지 않도록 설계</li>
+      <li><strong>3환경 자동 분기</strong> — API_ENV 환경변수 하나로 Production(읽기) / Preview(CUD 가능) / Beta(별도 DB) URL·토큰·인증 자동 전환</li>
+      <li><strong>데이터 원복 필수</strong> — CUD TC는 try-finally 패턴으로 생성→검증→삭제 원복, 실패해도 cleanup 보장</li>
+      <li><strong>Native App 환경 분리</strong> — iOS(TestFlight) / Android(AppTester)로 Dev/Prod 앱 개별 설치, 환경 간 간섭 제거</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
     <div class="detail-title">API Automation Details</div>
     <ul class="detail-list">
       <li><strong>446 TC</strong> — CI 활성 307건(69%), Critical 166건 매일 자동 실행</li>
-      <li><strong>3관점 TC 설계</strong> — QA(비즈니스 로직 50%) + BE Dev(스펙 검증 30%) + 자동화(안정성 20%)</li>
-      <li><strong>데이터 독립성</strong> — 하드코딩 ID 금지, 검색 API에서 동적 확보, CUD TC 원복 필수</li>
-      <li><strong>엔드포인트 커버율</strong> — apt-api 43% · ceo-api 68% · service-b 38% (274개 중 93개)</li>
+      <li><strong>TC 구조</strong> — 클래스별 도메인 분리, pytest marker(critical/high/medium)로 등급별 필터, fixture로 인증/환경 주입</li>
+      <li><strong>검증 패턴</strong> — assert_status(상태코드) + assert_json_keys(필수 필드) + assert_json_schema(타입/범위) + assert_response_time(성능)</li>
+      <li><strong>엔드포인트 커버율</strong> — apt-api 43%(38/114) · ceo-api 68%(25/37) · service-b 38%(30/123), Medium 등급 82개 API 확장 예정</li>
     </ul>
   </div>
 
@@ -370,7 +428,8 @@ Test Pyramid:
     <div class="detail-title">Web E2E Details</div>
     <ul class="detail-list">
       <li><strong>272 TC</strong> — 66개 spec 파일, 3개 서비스 100% CI 활성</li>
-      <li><strong>URL 커버리지 100%</strong> — 44개 URL 전체 커버</li>
+      <li><strong>URL 커버리지 100%</strong> — 44개 URL 전체 커버, L1(Smoke)→L2(Contract)→Visual→User Journey 계층화</li>
+      <li><strong>선택자 전략</strong> — data-testid 우선, React Native testID 계층적 도트 표기법 (screen.component.element)</li>
       <li>Phase 1~9 순차 구축 (Smoke → 기본 E2E → 기능별 확장 → 심화)</li>
     </ul>
   </div>
@@ -378,9 +437,10 @@ Test Pyramid:
   <div class="detail-section">
     <div class="detail-title">Mobile E2E Details</div>
     <ul class="detail-list">
-      <li><strong>Maestro 139 flows</strong> — Service A 74 + Service B 48 + Service C 17</li>
-      <li><strong>Appium 112 TC</strong> — iOS/Android/모바일 웹 3개 플랫폼</li>
-      <li><strong>딥링크 테스트 88개</strong> — Service A 49 + Service B 39</li>
+      <li><strong>Maestro 139 flows</strong> — YAML 선언형, testID > 접근성 레이블 > 텍스트 > 위치 우선순위</li>
+      <li><strong>Appium 112 TC</strong> — Page Object Model, iOS/Android/모바일 웹 3개 플랫폼</li>
+      <li><strong>딥링크 테스트 88개</strong> — 딥링크 우선 진입 전략으로 테스트 속도 향상</li>
+      <li><strong>하드코딩 금지</strong> — 모든 ID/좌표는 config/test-data.yaml 중앙 관리</li>
     </ul>
   </div>
 

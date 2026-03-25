@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>연향주 — QA Manager Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --accent: #0f7b6c;
+      --accent-light: #e8f5f2;
+      --border: #e2e2e2;
+      --sans: 'Inter', 'Noto Sans KR', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    @media print {
+      body { font-size: 10.5pt; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+      a { color: var(--text) !important; text-decoration: none !important; }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 32px;
+    }
+    .header-left h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .header-left .subtitle {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .header-right a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── Print Button ── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .print-btn:hover { opacity: 0.9; }
+
+    /* ── Summary ── */
+    .summary {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      padding: 16px 20px;
+      background: var(--accent-light);
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 28px; }
+    .section-title {
+      font-size: 13px;
+      font-family: var(--mono);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Experience ── */
+    .exp { margin-bottom: 22px; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .exp-company-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .exp-company-name small {
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .exp-role {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+    }
+    .exp-bullets li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 3px;
+    }
+    .exp-bullets li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    .exp-bullets li strong { color: var(--text); font-weight: 600; }
+
+    /* ── Skills ── */
+    .skills-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 4px 16px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .skills-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      padding-top: 2px;
+    }
+    .skills-value { color: var(--text-secondary); }
+
+    /* ── Certs ── */
+    .cert-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .cert-name { color: var(--text); font-weight: 500; }
+    .cert-year { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>연향주</h1>
+    <div class="subtitle">QA MANAGER &middot; 9+ YEARS</div>
+  </div>
+  <div class="header-right">
+    <a href="mailto:hjyeon@naver.com">hjyeon@naver.com</a><br>
+    <a href="https://github.com/yeonzoe">github.com/yeonzoe</a><br>
+    <a href="https://yeonzoe.github.io">yeonzoe.github.io</a>
+  </div>
+</div>
+
+<div class="summary">
+  프로세스 설계 · 자동화 · AI 도입까지 QA 전 영역을 직접 만들고 운영한 엔지니어.<br>
+  5개사 QA 리드 경험, 969+ TC 자동화 구축, AI 기반 TC 자동생성 파이프라인 설계.
+</div>
+
+<!-- Experience -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">직방 <small>ZIGBANG Co., Ltd</small></span>
+      <span class="exp-period">2024.07 — 현재</span>
+    </div>
+    <div class="exp-role">QA Manager &middot; 팀장</div>
+    <ul class="exp-bullets">
+      <li><strong>QA 조직 전환</strong> — CS팀 QA 1인 + 아르바이트 4인 + 모니터링 8인 → 정규직 2인 + 계약직 2인 전문 조직으로 재편</li>
+      <li><strong>전 계층 자동화 0→969건</strong> — TC 전무 상태에서 API 446 · Web 272 · Mobile 251건 구축, 3개 서비스 CI 연동</li>
+      <li><strong>3-Stage CI/CD 파이프라인</strong> — Preview → Beta → Production 품질 게이트 + Allure Dashboard 자동 배포 + Slack 장애 알림</li>
+      <li><strong>AI 기반 TC 자동생성 파이프라인</strong> — Claude Code 기반 PRD→TC 자동생성, 팀원 리뷰 플로우 설계 및 운영</li>
+      <li><strong>QA Management Dashboard</strong> — 스프린트 TC 현황 실시간 관리 대시보드 자체 개발, GitHub Actions 자동 동기화</li>
+      <li>배포 프로세스 안정화 (스프린트 구조 변경), 모니터링 관제에서 AI 모니터링 구조 개선</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">머스트잇</span>
+      <span class="exp-period">2023.10 — 2024.06</span>
+    </div>
+    <div class="exp-role">QA Manager &middot; 팀장 &middot; 9개월</div>
+    <ul class="exp-bullets">
+      <li>서비스 전반(메인홈/카테고리/GNB/상품/필터/찜) 개편 프로젝트 — Agile 기반 SDLC 전체 리딩</li>
+      <li>AIO Test Management Tool 도입 및 전사 전파, QA / Staging 인프라 구축</li>
+      <li>Kick-off ~ Sign-off 전 과정 QA 프로세스 정립, App 정기 배포 프로세스 안정화</li>
+      <li>운영 이슈 보고 프로세스 정립, 조직별 채널화 소통 체계 개선</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">그라운드엑스 <small>Ground X &middot; Klaytn</small></span>
+      <span class="exp-period">2022.03 — 2023.10</span>
+    </div>
+    <div class="exp-role">QA Manager &middot; 파트 리드 &middot; 1년 8개월</div>
+    <ul class="exp-bullets">
+      <li>블록체인 클립 지갑 서비스 (App/Web/Server/BOF/bapp SDK) Full Coverage QA — 신규 기능 런칭 대응</li>
+      <li>카카오톡 지갑-NFT 연동 서비스 런칭, 카카오톡 Auth 연동 테스트 안정화</li>
+      <li>NFT 테스트 데이터 생성 자동화 — 테스트 수행 시간 단축, 유관 부서 요청 대응 시간 단축</li>
+      <li>임베디드 디바이스 NFC 인식 체크인 서비스 QA, QA 외주 인력 계약/관리/문서 리뷰</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">야놀자Tech <small>R&amp;D</small></span>
+      <span class="exp-period">2020.10 — 2022.03</span>
+    </div>
+    <div class="exp-role">QA Manager &middot; 팀원 &middot; 1년 6개월</div>
+    <ul class="exp-bullets">
+      <li>데일리호텔 서비스 — 포인트/트루리뷰/서브홈/신규 컴포넌트/결제수단 런칭 QA</li>
+      <li><strong>회원가입 완료율 20% 향상</strong> 기여 — 가입 플로우 이탈 지점 식별 · UX 개선 제안 (마케팅/데이터 조직 성과 공유 기준)</li>
+      <li>테스트 기법(동치분할/경계값/상태전이) 도입으로 초기 결함 검출률 <strong>40% 향상</strong></li>
+      <li>팀 전체 워크플로우 표준화 — 업무 이해도 향상 및 커뮤니케이션 비용 절감</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">이우소프트</span>
+      <span class="exp-period">2016.12 — 2020.03</span>
+    </div>
+    <div class="exp-role">QA Manager &middot; 팀원 &middot; 3년 4개월</div>
+    <ul class="exp-bullets">
+      <li>AI 의료 진단 웹서비스 QA → <strong>2019 대한민국 SW 기술대상 수상</strong> 기여</li>
+      <li>FDA / 식약처 의료 인증 획득 지원, AI 진단 기능 신규 버전 품질 프로세스/산출물 재정비</li>
+      <li>X-ray Detector 연동 SW 검증 프로세스 수립 — 무선 Detector 장비 출시, 판매 실적 증가</li>
+      <li>품질 프로세스 단계별 TC 자동화로 반복 테스트 수행 시간 단축</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Skills -->
+<div class="section">
+  <div class="section-title">Skills</div>
+  <div class="skills-row">
+    <span class="skills-label">Test</span>
+    <span class="skills-value">ISTQB CTFL, 테스트 설계, BDD, 3관점 TC 프레임워크, TC 품질관리</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">Automation</span>
+    <span class="skills-value">pytest, Playwright (TS), Maestro, Appium, GitHub Actions CI/CD</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">AI / Tools</span>
+    <span class="skills-value">Claude Code, AI-Driven QA, Allure Dashboard, Jira, Confluence</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">Language</span>
+    <span class="skills-value">Python, TypeScript, SQL</span>
+  </div>
+</div>
+
+<!-- Certifications -->
+<div class="section">
+  <div class="section-title">Credentials</div>
+  <div class="cert-item">
+    <span class="cert-name">ISTQB CTFL (국제 소프트웨어 테스팅 자격)</span>
+    <span class="cert-year">2018</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">2019 대한민국 SW 기술대상 수상 (AI 의료 진단 솔루션)</span>
+    <span class="cert-year">2019</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">JLPT 2급 &middot; OPIc 일본어 AL</span>
+    <span class="cert-year">일본어 업무 능통</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">PMBOK 6.0 &middot; BABOK 3.0 &middot; Agile/Scrum (KOSTA 수료)</span>
+    <span class="cert-year">2018</span>
+  </div>
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">PDF로 저장 (Cmd+P)</button>
+
+</body>
+</html>

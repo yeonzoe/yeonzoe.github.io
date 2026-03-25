@@ -557,6 +557,128 @@ QA Accept → TC 확정 → CI 연동</pre>
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- Project 4: MUSTIT QA Org Building      -->
+<!-- ═══════════════════════════════════════ -->
+<div class="project-block">
+  <div class="pb-header">
+    <div class="pb-title">QA Organization Building (MUSTIT)</div>
+    <span class="pb-badge pb-badge--done">COMPLETED</span>
+  </div>
+  <div class="pb-subtitle">2023.10 — 2024.06 &middot; QA Manager</div>
+
+  <div class="pb-summary">
+    QA 전담 조직이 없는 상태(개발팀 겸임)에서 독립 QA 조직을 신설하고,<br>
+    4단계 QA 프로세스 표준화 + 환경 분리 + Jira 워크플로우 자동화를 구축했습니다.
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">QA Organization</div>
+      <div class="metric-value">0 → 1</div>
+      <div class="metric-note">전담 조직 부재 → 독립 QA팀 신설</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Test Environment</div>
+      <div class="metric-value">2 → 4</div>
+      <div class="metric-note">Dev/Prod → +QA/STG</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">QA Process</div>
+      <div class="metric-value">4단계</div>
+      <div class="metric-note">표준화 프로세스 수립</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Key Decisions</div>
+      <div class="metric-value">7건</div>
+      <div class="metric-note">의사결정 항목 정의 및 실행</div>
+    </div>
+  </div>
+
+  <table class="ba-table">
+    <tr><th>항목</th><th>Before</th><th>After</th></tr>
+    <tr><td>QA 조직</td><td class="before">부재 (개발팀이 QA 겸임)</td><td class="after">독립 QA 조직 신설 + Jira MSQA 프로젝트</td></tr>
+    <tr><td>테스트 환경</td><td class="before">Dev / Prod만 존재</td><td class="after">Dev → QA → STG → Prod 4단계</td></tr>
+    <tr><td>프로세스</td><td class="before">표준화 미흡, 배포마다 상이</td><td class="after">기획→Acceptance→Regression→STG 표준화</td></tr>
+    <tr><td>버전 관리</td><td class="before">빌드 단위, 버전 불명확</td><td class="after">프로젝트명 기반 테마 코드 관리</td></tr>
+    <tr><td>이슈 추적</td><td class="before">각 조직별 임의 대응</td><td class="after">Bug Ticket Workflow + Resolution 분류</td></tr>
+    <tr><td>부서간 소통</td><td class="before">Jira/Wiki 분산</td><td class="after">3채널(전사/Division/배포) 소통 체계</td></tr>
+  </table>
+
+  <div class="detail-section">
+    <div class="detail-title">7 Key Decisions</div>
+    <ul class="detail-list">
+      <li><strong>A. QA 리소스 배치</strong> — 기획/이벤트 중심 → Product 이슈 영향도 기반 우선 투입</li>
+      <li><strong>B. Release Note</strong> — 부재 → QA Wiki에 배포 환경/버전/내용 명시, 배포 투명성 확보</li>
+      <li><strong>C. QA 프로젝트</strong> — PROJ 의존 → 독립 MSQA 프로젝트 + 자동 티켓 복제 워크플로우</li>
+      <li><strong>D. 커뮤니케이션</strong> — 분산 → 조직별 채널 신설 (전사/Division/배포)</li>
+      <li><strong>E. QA 환경</strong> — Dev/Prod만 존재 → QA 환경 신규 구축 + STG 로드맵</li>
+      <li><strong>F. 배포 버전</strong> — 빌드 단위 → 프로젝트 테마 코드 기반 관리 (Apple/Banana/Cherry)</li>
+      <li><strong>G. Jira 권한</strong> — Tech 중앙 관리 → 부서별 관리자 권한 위임, 의사결정 속도 개선</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">Process Architecture</div>
+    <div class="arch-block">
+      <pre>
+QA 프로세스 4단계
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 기획/준비 (1~2D)
+   PRD 리뷰 50% + 사전 구조 설계 50%
+   ↓
+2. Acceptance Test (2~10D)
+   Smoke Test → 요구사항 기반 테스트 → Issue 확인
+   ↓
+3. Regression Test (2~10D)
+   Acceptance 이슈 전체 해결 확인
+   ↓
+4. STG Test (0.5~3D)
+   Prod 유사 환경 최종 검증
+
+
+배포 일정 (정기 배포)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+전주 월/화  →  목 11:00  →  금  →  월
+통합 빌드     Bug Triage   Freeze  Release
+
+
+Jira 워크플로우 (자동 복제)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROJ (Product 이슈)
+  ↓ 자동 생성
+MSQA (QA Epic)
+  ↓ 자동 생성
+TECH (Dev 티켓)
+
+Bug: OPEN → IN PROGRESS → RESOLVED → CLOSED
+     └→ REOPENED ────────────────────┘</pre>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">Tools & Infrastructure</div>
+    <ul class="detail-list">
+      <li><strong>AIO Test Management</strong> — Jira 내 TC 작성/관리, Test Execution 추적, Coverage 계산</li>
+      <li><strong>QA 환경 구축</strong> — AWS 기반, Hot-fix 악순환 해결을 위한 독립 테스트 환경</li>
+      <li><strong>Native App 분리</strong> — iOS(TestFlight) / Android(AppTester)로 환경별 앱 개별 설치</li>
+      <li><strong>ISO/IEC 25010 기반</strong> — SW 품질 특성 8가지 관점(기능 적합성~이식성) 적용</li>
+    </ul>
+  </div>
+
+  <div class="tech-tags">
+    <span class="tech-tag">Jira</span>
+    <span class="tech-tag">AIO Test Management</span>
+    <span class="tech-tag">Confluence</span>
+    <span class="tech-tag">AWS</span>
+    <span class="tech-tag">TestFlight</span>
+    <span class="tech-tag">Agile/Scrum</span>
+  </div>
+</div>
+
 </div><!-- container -->
 </body>
 </html>

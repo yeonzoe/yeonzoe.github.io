@@ -584,6 +584,7 @@
       position: relative; z-index: 1;
     }
     .project-link:hover { background: rgba(62,207,190,0.2); border-color: var(--accent); }
+    .project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
     .project-tag {
       padding: 3px 9px;
       background: var(--surface);
@@ -941,10 +942,16 @@
       <div class="project-desc">
         TC·자동화 전무 상태에서 6개월 만에 3개 서비스 × 3계층(API·Web·Mobile) 969건 자동화 구축. 배포 검증 2~3시간→1분, 수동 회귀 22시간/주 절감. 환경변수 중앙화로 3환경(Production/Preview/Beta) 동일 TC 실행.
       </div>
-      <a class="project-link" href="https://github.com/yeonzoe/qa-portfolio" target="_blank">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        View on GitHub
-      </a>
+      <div class="project-links">
+        <a class="project-link" href="work.html" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Details
+        </a>
+        <a class="project-link" href="https://github.com/yeonzoe/qa-portfolio" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
       <div class="project-tags">
         <span class="project-tag">pytest</span>
         <span class="project-tag">Playwright TS</span>
@@ -960,6 +967,12 @@
       <div class="project-desc">
         TC 생성 6일→2.5일(58% 단축), 정확도 60%→80%. 3관점 검증(QA·BE·자동화) + TC-for-TC 23개 기준 자가검증 + UNCLEAR 100% 추적(3-Bucket 분류). PRD 정제 → AI 초안 → QA Accept 워크플로우.
       </div>
+      <div class="project-links">
+        <a class="project-link" href="work.html" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Details
+        </a>
+      </div>
       <div class="project-tags">
         <span class="project-tag">Claude Code</span>
         <span class="project-tag">AI-Driven QA</span>
@@ -973,6 +986,12 @@
       <div class="project-title">QA Management<br>Dashboard</div>
       <div class="project-desc">
         스프린트별 TC 현황 실시간 추적 + Allure 리포트 자동 생성/배포. 테스트 결과 공유 30분→0분(자동), Slack 알림으로 5분 내 대응. 최근 30건 히스토리 트렌드, 서비스별/환경별/등급별 필터링.
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="work.html" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Details
+        </a>
       </div>
       <div class="project-tags">
         <span class="project-tag">GitHub Pages</span>

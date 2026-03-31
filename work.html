@@ -554,11 +554,59 @@ QA Accept → TC 확정 → CI 연동</pre>
     </ul>
   </div>
 
+  <div class="detail-section">
+    <div class="detail-title">Claude Code Workflow Architecture</div>
+    <div class="arch-block">
+      <pre>
+5-Layer AI QA 생태계
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Layer 1: Slash Commands (워크플로우 자동화)
+  /tc-generate    → 7-Step TC 생성 파이프라인
+  /tc-verify      → TC-for-TC 23기준 자가검증
+  /prd-refine     → 6-Step PRD 정제 + CK-1~10
+  /tc-creation    → E2E 오케스트레이터
+
+Layer 2: Hooks (품질 자동 검증)
+  pre-commit      → HTML 구조 검증
+  post-tool       → 파일 변경 시 자동 검증
+  stop            → 미커밋 변경 경고
+
+Layer 3: MCP Servers (외부 시스템 연동)
+  Codex MCP       → 26개 도구 (코드 분석/영향 분석)
+  Figma MCP       → 디자인 컨텍스트 추출
+  Chrome MCP      → 브라우저 자동화
+
+Layer 4: Custom Skills (도메인 특화)
+  12개 스킬       → TC 생성/PRD 분석/영향 분석
+                    회귀 범위 산출/API 테스트 등
+
+Layer 5: Rules & Config (팀 표준)
+  team.md         → 11-Column TC/브랜치 전략/커밋
+  personal.md     → L1~L4 작업 레벨/구조 잠금
+  CLAUDE.md       → 프로젝트 컨텍스트</pre>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">Workflow Automation Details</div>
+    <ul class="detail-list">
+      <li><strong>Slash Commands</strong> — /tc-generate(PRD→TC 7단계), /tc-verify(23기준 자가검증), /prd-refine(CK-1~10 체크리스트), /tc-creation(E2E 파이프라인 오케스트레이터)</li>
+      <li><strong>Hooks</strong> — pre-commit HTML 구조 검증, post-tool 파일 변경 시 자동 검증, 세션 종료 시 미커밋 경고</li>
+      <li><strong>MCP 연동</strong> — Codex MCP(26개 도구: 코드 분석/영향 분석/크로스 레포 의존성), Figma MCP(디자인 컨텍스트 TC 반영)</li>
+      <li><strong>커스텀 Skills 12개</strong> — tc-creation, tc-from-prd, impact-analysis, regression-scope, api-test, web-e2e-test 등 QA 전 과정 커버</li>
+      <li><strong>Rules</strong> — L1~L4 작업 레벨 체계(조회/수정/중간/대규모), 구조 잠금(L-구조/L-부분/L-질문), FP/FN 크로스 리뷰 병렬 패턴</li>
+    </ul>
+  </div>
+
   <div class="tech-tags">
     <span class="tech-tag">Claude Code</span>
+    <span class="tech-tag">Slash Commands</span>
+    <span class="tech-tag">MCP (Codex/Figma)</span>
+    <span class="tech-tag">Custom Skills</span>
+    <span class="tech-tag">Hooks</span>
     <span class="tech-tag">Gherkin BDD</span>
     <span class="tech-tag">Jira API</span>
-    <span class="tech-tag">Markdown TC</span>
     <span class="tech-tag">GitHub Actions</span>
   </div>
 </div>

@@ -3,4 +3,6 @@
 .env.*
 node_modules/
 .cursor/
+.claude/
+CLAUDE.md
 연향주_원티드_이력서.pdf

@@ -47,9 +47,6 @@
       overflow-x: hidden;
     }
 
-    /* CRT effect removed — clean display */
-
-    /* ── Phosphor Glow on top ── */
     body::before {
       content: '';
       position: fixed;
@@ -68,7 +65,6 @@
     a { color: var(--cyan); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── Terminal Window ── */
     .terminal {
       max-width: 960px;
       margin: 0 auto;
@@ -89,16 +85,8 @@
       backdrop-filter: blur(16px);
     }
 
-    .window-dots {
-      display: flex;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .window-dots span {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-    }
+    .window-dots { display: flex; gap: 6px; flex-shrink: 0; }
+    .window-dots span { width: 11px; height: 11px; border-radius: 50%; }
     .dot-r { background: var(--red-dot); }
     .dot-y { background: var(--yellow-dot); }
     .dot-g { background: var(--green-dot); }
@@ -112,12 +100,7 @@
       margin-right: 50px;
     }
 
-    .terminal-tabs {
-      display: flex;
-      gap: 0;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .terminal-tabs { display: flex; gap: 0; margin-left: auto; margin-right: auto; }
     .terminal-tab {
       font-family: var(--mono);
       font-size: 11px;
@@ -129,95 +112,41 @@
       transition: all 0.2s;
       text-decoration: none;
     }
-    .terminal-tab:hover {
-      color: var(--green);
-      text-decoration: none;
-      background: var(--green-dim);
-    }
-    .terminal-tab.active {
-      color: var(--green);
-      border-color: var(--border-strong);
-      background: var(--green-dim);
-    }
+    .terminal-tab:hover { color: var(--green); text-decoration: none; background: var(--green-dim); }
+    .terminal-tab.active { color: var(--green); border-color: var(--border-strong); background: var(--green-dim); }
 
-    /* ── Terminal Body ── */
-    .terminal-body {
-      padding: 32px 28px 120px;
-    }
+    .terminal-body { padding: 32px 28px 120px; }
 
-    /* ── Prompt ── */
-    .prompt {
-      color: var(--green);
-      font-weight: 500;
-      user-select: none;
-    }
+    .prompt { color: var(--green); font-weight: 500; user-select: none; }
     .prompt-user { color: var(--cyan); }
     .prompt-at { color: var(--muted); }
     .prompt-host { color: var(--magenta); }
     .prompt-path { color: var(--amber); }
     .prompt-dollar { color: var(--green); }
 
-    /* ── Command Line ── */
-    .cmd {
-      margin-bottom: 28px;
-    }
-    .cmd-line {
-      display: flex;
-      gap: 8px;
-      align-items: baseline;
-      margin-bottom: 6px;
-    }
-    .cmd-text {
-      color: var(--text-bright);
-      font-weight: 400;
-    }
+    .cmd { margin-bottom: 28px; }
+    .cmd-line { display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+    .cmd-text { color: var(--text-bright); font-weight: 400; }
     .cmd-flag { color: var(--cyan); }
     .cmd-arg { color: var(--amber); }
 
-    /* ── Cursor Blink ── */
-    .cursor { display: none; }
-
-    /* ── Output Blocks ── */
-    .output {
-      padding-left: 0;
-      margin-bottom: 12px;
-    }
-
-    .output-line {
-      color: var(--text);
-      line-height: 1.8;
-    }
-
-    .output-comment {
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .output-highlight {
-      color: var(--green);
-      font-weight: 500;
-    }
-
-    .output-value {
-      color: var(--amber);
-      font-weight: 600;
-    }
-
+    .output { padding-left: 0; margin-bottom: 12px; }
+    .output-line { color: var(--text); line-height: 1.8; }
+    .output-comment { color: var(--muted); font-style: italic; }
+    .output-highlight { color: var(--green); font-weight: 500; }
+    .output-value { color: var(--amber); font-weight: 600; }
     .output-dim { color: var(--muted); }
 
-    /* ── Section Divider ── */
     .divider {
       color: var(--muted);
       margin: 48px 0 32px;
       opacity: 0.4;
       font-size: 11px;
-      letter-spacing: 0;
       user-select: none;
       overflow: hidden;
       white-space: nowrap;
     }
 
-    /* ── ASCII Stats ── */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -230,10 +159,7 @@
       text-align: center;
       background: var(--bg-surface);
     }
-    .stat-box:hover {
-      border-color: var(--green);
-      background: var(--green-dim);
-    }
+    .stat-box:hover { border-color: var(--green); background: var(--green-dim); }
     .stat-num {
       font-size: 22px;
       font-weight: 700;
@@ -249,32 +175,16 @@
       margin-top: 4px;
     }
 
-    /* ── Pillar Blocks ── */
     .pillar {
       border-left: 2px solid var(--green);
       padding: 12px 0 12px 20px;
       margin: 12px 0;
       background: linear-gradient(90deg, var(--green-dim), transparent 60%);
     }
-    .pillar-num {
-      color: var(--green);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-    }
-    .pillar-title {
-      color: var(--text-bright);
-      font-weight: 600;
-      font-size: 14px;
-      margin: 2px 0 4px;
-    }
-    .pillar-desc {
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 13px;
-      line-height: 1.8;
-    }
+    .pillar-num { color: var(--green); font-size: 11px; letter-spacing: 0.1em; }
+    .pillar-title { color: var(--text-bright); font-weight: 600; font-size: 14px; margin: 2px 0 4px; }
+    .pillar-desc { color: var(--text); font-family: var(--sans); font-size: 13px; line-height: 1.8; }
 
-    /* ── Tree View (Skills) ── */
     .tree { line-height: 1.9; }
     .tree-branch { color: var(--muted); user-select: none; }
     .tree-dir { color: var(--cyan); font-weight: 500; }
@@ -289,13 +199,8 @@
       background: var(--bg-surface);
       border-radius: 2px;
     }
-    .tree-badge.gold {
-      border-color: var(--amber);
-      color: var(--amber);
-      background: var(--amber-dim);
-    }
+    .tree-badge.gold { border-color: var(--amber); color: var(--amber); background: var(--amber-dim); }
 
-    /* ── Git Log (Experience) ── */
     .git-log-entry {
       display: grid;
       grid-template-columns: 86px 56px 1fr;
@@ -305,54 +210,21 @@
       align-items: start;
     }
     .git-log-entry:last-child { border-bottom: none; }
-    .git-hash {
-      color: var(--amber);
-      font-size: 11px;
-      font-weight: 500;
-      padding-top: 2px;
-    }
-    .git-graph {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 4px;
-    }
+    .git-hash { color: var(--amber); font-size: 11px; font-weight: 500; padding-top: 2px; }
+    .git-graph { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
     .git-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+      width: 10px; height: 10px; border-radius: 50%;
       background: var(--green);
       border: 2px solid var(--bg);
       box-shadow: 0 0 6px var(--green-glow);
       flex-shrink: 0;
     }
     .git-dot.past { background: var(--muted); box-shadow: none; }
-    .git-line {
-      width: 1px;
-      flex: 1;
-      background: var(--border-strong);
-      min-height: 20px;
-    }
-    .git-company {
-      color: var(--text-bright);
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .git-company small {
-      font-weight: 400;
-      font-size: 11px;
-      color: var(--muted);
-      margin-left: 6px;
-    }
-    .git-role {
-      color: var(--cyan);
-      font-size: 12px;
-      margin: 2px 0 8px;
-    }
-    .git-bullets {
-      list-style: none;
-      padding: 0;
-    }
+    .git-line { width: 1px; flex: 1; background: var(--border-strong); min-height: 20px; }
+    .git-company { color: var(--text-bright); font-weight: 600; font-size: 14px; }
+    .git-company small { font-weight: 400; font-size: 11px; color: var(--muted); margin-left: 6px; }
+    .git-role { color: var(--cyan); font-size: 12px; margin: 2px 0 8px; }
+    .git-bullets { list-style: none; padding: 0; }
     .git-bullets li {
       position: relative;
       padding-left: 16px;
@@ -370,17 +242,9 @@
       font-family: var(--mono);
       font-size: 11px;
     }
-    .git-bullets li strong {
-      color: var(--text-bright);
-      font-weight: 600;
-    }
+    .git-bullets li strong { color: var(--text-bright); font-weight: 600; }
 
-    /* ── Project Cards (ls -la) ── */
-    .ls-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0;
-    }
+    .ls-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
     .ls-table th {
       text-align: left;
       font-size: 10px;
@@ -390,45 +254,22 @@
       padding: 6px 8px;
       border-bottom: 1px solid var(--border-strong);
     }
-    .ls-table td {
-      padding: 10px 8px;
-      border-bottom: 1px solid var(--border);
-      font-size: 12px;
-      vertical-align: top;
-    }
-    .ls-table tr:hover td {
-      background: var(--green-dim);
-    }
-    .ls-name {
-      color: var(--cyan);
-      font-weight: 500;
-    }
-    .ls-name a {
-      color: var(--cyan);
-    }
+    .ls-table td { padding: 10px 8px; border-bottom: 1px solid var(--border); font-size: 12px; vertical-align: top; }
+    .ls-table tr:hover td { background: var(--green-dim); }
+    .ls-name { color: var(--cyan); font-weight: 500; }
+    .ls-name a { color: var(--cyan); }
     .ls-size { color: var(--amber); font-weight: 500; }
     .ls-perm { color: var(--muted); }
-    .ls-desc {
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 12px;
-    }
-    .ls-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 6px;
-    }
+    .ls-desc { color: var(--text); font-family: var(--sans); font-size: 12px; }
+    .ls-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
     .ls-tag {
-      font-size: 10px;
-      padding: 1px 6px;
+      font-size: 10px; padding: 1px 6px;
       border: 1px solid var(--border);
       color: var(--muted);
       border-radius: 2px;
       font-family: var(--mono);
     }
 
-    /* ── Credentials ── */
     .cred-item {
       display: flex;
       justify-content: space-between;
@@ -439,36 +280,17 @@
     .cred-name { color: var(--text-bright); font-size: 12px; }
     .cred-year { color: var(--muted); font-size: 11px; }
 
-    /* ── Contact ── */
-    .contact-line {
-      display: flex;
-      gap: 8px;
-      margin: 3px 0;
-    }
+    .contact-line { display: flex; gap: 8px; margin: 3px 0; }
     .contact-key { color: var(--muted); min-width: 70px; }
     .contact-val a { color: var(--cyan); }
 
-    /* ── Typing Animation ── */
-    @keyframes typeIn {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    .type-effect {
-      display: inline;
-    }
-
-    /* ── Fade In ── */
     .fade-cmd {
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.5s, transform 0.5s;
     }
-    .fade-cmd.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-cmd.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Footer ── */
     .footer-exit {
       margin-top: 64px;
       padding: 24px 0;
@@ -476,13 +298,8 @@
       text-align: center;
     }
     .footer-exit .prompt { font-size: 12px; }
-    .footer-pid {
-      color: var(--muted);
-      font-size: 10px;
-      margin-top: 8px;
-    }
+    .footer-pid { color: var(--muted); font-size: 10px; margin-top: 8px; }
 
-    /* ── Print ── */
     @media print {
       body::after, body::before { display: none; }
       .terminal-chrome { display: none; }
@@ -491,7 +308,6 @@
       .stat-num { color: #1a1a1a; }
     }
 
-    /* ── Mobile ── */
     @media (max-width: 768px) {
       .terminal-body { padding: 20px 16px 80px; }
       .terminal-tabs { display: none; }
@@ -502,8 +318,6 @@
       .git-graph { display: none; }
       .ls-table { font-size: 11px; }
       .ls-table .hide-mobile { display: none; }
-      .pillar { margin-left: 0; }
-      .type-effect { animation: none; border-right: none; white-space: normal; overflow: visible; }
     }
   </style>
 </head>
@@ -511,7 +325,6 @@
 
 <div class="terminal">
 
-  <!-- Terminal Chrome -->
   <div class="terminal-chrome">
     <div class="window-dots">
       <span class="dot-r"></span>
@@ -528,10 +341,9 @@
     <div class="terminal-title">yeonzoe@qa-engineer: ~/portfolio</div>
   </div>
 
-  <!-- Terminal Body -->
   <div class="terminal-body">
 
-    <!-- ══════════════ whoami ══════════════ -->
+    <!-- whoami -->
     <div class="cmd" id="whoami">
       <div class="cmd-line">
         <span class="prompt"><span class="prompt-user">yeonzoe</span><span class="prompt-at">@</span><span class="prompt-host">qa-engineer</span>:<span class="prompt-path">~</span><span class="prompt-dollar">$</span></span>
@@ -544,39 +356,40 @@
         </div>
         <div style="color:var(--green);font-size:12px;letter-spacing:0.08em;margin-bottom:16px;">QA ENGINEER · 13+ YEARS</div>
         <div style="font-family:var(--sans);font-size:14px;color:var(--text);line-height:1.8;">
-          <span class="type-effect">QA 조직 빌딩 · 자동화 · AI Native 워크플로우까지 0에서 설계하고 직접 운영해온 엔지니어.</span>
+          6개사에서 QA 조직을 처음부터 설계하고 운영해온 엔지니어.<br>
+          테스트 전략 수립부터 자동화 파이프라인 구축, AI 기반 TC 자동생성까지 전 과정을 직접 실행.
         </div>
       </div>
 
       <div class="stats-grid" style="margin-top:20px;">
         <div class="stat-box">
           <span class="stat-num">13<small style="font-size:12px;color:var(--muted);">+</small></span>
-          <div class="stat-label">Years</div>
+          <div class="stat-label">경력</div>
         </div>
         <div class="stat-box">
           <span class="stat-num">0→969</span>
-          <div class="stat-label">Automated TCs</div>
+          <div class="stat-label">자동화 TC</div>
         </div>
         <div class="stat-box">
           <span class="stat-num">6</span>
-          <div class="stat-label">Companies</div>
+          <div class="stat-label">경험 회사</div>
         </div>
         <div class="stat-box">
-          <span class="stat-num">22h<small style="font-size:10px;color:var(--muted);">/w</small></span>
-          <div class="stat-label">Time Saved</div>
+          <span class="stat-num">58%<small style="font-size:10px;color:var(--muted);">↓</small></span>
+          <div class="stat-label">수동 공수 절감</div>
         </div>
       </div>
 
       <div style="margin-top:12px;">
-        <div class="contact-line"><span class="contact-key">email</span><span class="contact-val"><a href="mailto:hjyeon@naver.com">hjyeon@naver.com</a></span></div>
-        <div class="contact-line"><span class="contact-key">github</span><span class="contact-val"><a href="https://github.com/yeonzoe" target="_blank">github.com/yeonzoe</a></span></div>
-        <div class="contact-line"><span class="contact-key">resume</span><span class="contact-val"><a href="resume.html" target="_blank">resume.html</a></span></div>
+        <div class="contact-line"><span class="contact-key">이메일</span><span class="contact-val"><a href="mailto:hjyeon@naver.com">hjyeon@naver.com</a></span></div>
+        <div class="contact-line"><span class="contact-key">GitHub</span><span class="contact-val"><a href="https://github.com/yeonzoe" target="_blank">github.com/yeonzoe</a></span></div>
+        <div class="contact-line"><span class="contact-key">이력서</span><span class="contact-val"><a href="resume.html" target="_blank">resume.html</a></span></div>
       </div>
     </div>
 
     <div class="divider">───────────────────────────────────────────────────────────────────────</div>
 
-    <!-- ══════════════ cat about.txt ══════════════ -->
+    <!-- cat about.txt -->
     <div class="cmd fade-cmd">
       <div class="cmd-line">
         <span class="prompt"><span class="prompt-dollar">$</span></span>
@@ -585,25 +398,25 @@
       <div class="output">
         <div class="pillar">
           <div class="pillar-num">01</div>
-          <div class="pillar-title">Shift-Left & Spec Review</div>
-          <div class="pillar-desc">결함의 83%는 PRD/설계 단계에서 유입됩니다. 개발 요구사항과 기술 설계를 주도적으로 리뷰하고, Root Cause Analysis로 재발을 방지합니다.</div>
+          <div class="pillar-title">결함은 코드보다 앞에서 막는다</div>
+          <div class="pillar-desc">결함의 대부분은 PRD·설계 단계에서 유입됩니다. 개발 요구사항과 기술 설계를 주도적으로 리뷰하고, 근본 원인 분석으로 재발을 차단합니다.</div>
         </div>
         <div class="pillar">
           <div class="pillar-num">02</div>
-          <div class="pillar-title">Automation-First</div>
-          <div class="pillar-desc">자동화 0건에서 969건을 구축하고, 배포 검증 시간을 2~3시간에서 1분으로 단축했습니다. 수동 반복을 제거해 QA가 탐색적 테스트에 집중합니다.</div>
+          <div class="pillar-title">반복은 자동화로 없앤다</div>
+          <div class="pillar-desc">자동화 0건에서 969건을 구축하고, 배포 검증 시간을 2~3시간에서 1분으로 단축했습니다. 수동 반복을 제거해 QA가 탐색적 테스트에 집중할 수 있게 합니다.</div>
         </div>
         <div class="pillar">
           <div class="pillar-num">03</div>
-          <div class="pillar-title">AI Native QA</div>
-          <div class="pillar-desc">Claude Code 기반 TC 자동생성(58% 단축), Agent Review, Spec Driven Development 경험. AI는 워크플로우 전반에 자연스럽게 개입합니다.</div>
+          <div class="pillar-title">AI를 워크플로우 안에 넣는다</div>
+          <div class="pillar-desc">Claude Code 기반 TC 자동생성으로 수동 공수를 58% 절감. 도구를 쓰는 것과 워크플로우에 통합하는 것은 다릅니다 — 후자를 합니다.</div>
         </div>
       </div>
     </div>
 
     <div class="divider">───────────────────────────────────────────────────────────────────────</div>
 
-    <!-- ══════════════ ls skills/ ══════════════ -->
+    <!-- tree skills/ -->
     <div class="cmd fade-cmd" id="skills">
       <div class="cmd-line">
         <span class="prompt"><span class="prompt-dollar">$</span></span>
@@ -611,16 +424,16 @@
       </div>
       <div class="output tree" style="margin-top:8px;">
         <div><span class="tree-branch">skills/</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">test-process/</span></div>
+        <div><span class="tree-branch">├── </span><span class="tree-dir">테스트 설계/</span></div>
         <div><span class="tree-branch">│   ├── </span><span class="tree-badge gold">ISTQB CTFL</span> <span class="tree-badge">테스트 전략 수립</span> <span class="tree-badge">BDD / GWT</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge">결함 Life Cycle</span> <span class="tree-badge">Root Cause Analysis</span> <span class="tree-badge">Agile / Scrum</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">automation/</span></div>
+        <div><span class="tree-branch">│   └── </span><span class="tree-badge">결함 라이프사이클 관리</span> <span class="tree-badge">근본 원인 분석</span> <span class="tree-badge">Agile / Scrum</span></div>
+        <div><span class="tree-branch">├── </span><span class="tree-dir">자동화/</span></div>
         <div><span class="tree-branch">│   └── </span><span class="tree-badge">pytest</span> <span class="tree-badge">Playwright TS</span> <span class="tree-badge">Maestro</span> <span class="tree-badge">Appium</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">ai-native/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">Claude Code</span> <span class="tree-badge">Cursor</span> <span class="tree-badge">SDD</span> <span class="tree-badge">Agent Review</span> <span class="tree-badge">AI TC Pipeline</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">infra-tools/</span></div>
+        <div><span class="tree-branch">├── </span><span class="tree-dir">AI 워크플로우/</span></div>
+        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">Claude Code</span> <span class="tree-badge">Cursor</span> <span class="tree-badge">명세 기반 개발</span> <span class="tree-badge">에이전트 리뷰</span> <span class="tree-badge">AI TC 파이프라인</span></div>
+        <div><span class="tree-branch">├── </span><span class="tree-dir">인프라 · 도구/</span></div>
         <div><span class="tree-branch">│   └── </span><span class="tree-badge">GitHub Actions</span> <span class="tree-badge">Allure</span> <span class="tree-badge">Jira</span> <span class="tree-badge">Confluence</span> <span class="tree-badge">AIO</span></div>
-        <div><span class="tree-branch">└── </span><span class="tree-dir">language/</span></div>
+        <div><span class="tree-branch">└── </span><span class="tree-dir">언어/</span></div>
         <div><span class="tree-branch">    └── </span><span class="tree-badge">Python</span> <span class="tree-badge">TypeScript</span> <span class="tree-badge">SQL</span></div>
         <div style="margin-top:6px;"><span class="output-dim">5 directories, 23 skills</span></div>
       </div>
@@ -628,7 +441,7 @@
 
     <div class="divider">───────────────────────────────────────────────────────────────────────</div>
 
-    <!-- ══════════════ git log ══════════════ -->
+    <!-- git log experience/ -->
     <div class="cmd fade-cmd" id="experience">
       <div class="cmd-line">
         <span class="prompt"><span class="prompt-dollar">$</span></span>
@@ -644,13 +457,12 @@
             <div class="git-company">직방<small>ZIGBANG · QA Engineer</small></div>
             <div class="git-role">PropTech · 3개 서비스 · QA 조직 빌딩 + 자동화 + AI</div>
             <ul class="git-bullets">
-              <li><strong>QA 조직 전환</strong> — CS팀 QA 1인 + 아르바이트 4인 + 모니터링 8인 → 정규직 2인 + 계약직 2인 전문 조직</li>
-              <li><strong>전 계층 자동화 0→969건</strong> — 11-Column TC 표준(ISO 25010) + 블랙박스 5기법, 수동 회귀 22시간/주 절감</li>
-              <li><strong>TC 설계 체계</strong> — 동등분할·경계값·결정테이블·상태전이·오류추정 + BDD(GWT) + 보안 TC(SQLi/XSS)</li>
-              <li><strong>배포 검증 2~3h→1m</strong> — 3-Stage CI/CD + skipOnProd 패턴 + 3환경 자동 분기(API_ENV)</li>
-              <li><strong>AI TC 6d→2.5d (58%↓)</strong> — 3관점 검증 + TC-for-TC 23기준 + UNCLEAR 3-Bucket 분류</li>
-              <li><strong>Claude Code 워크플로우 설계</strong> — Slash Commands(TC 생성/검증/배포)·Hooks(pre-commit 검증)·MCP(Codex 26도구/Figma)·커스텀 Skills 12개로 QA 전 과정 자동화</li>
-              <li><strong>QA Dashboard + 토큰 자동화</strong> — Allure + GitHub Pages, OAuth 자동 발급으로 CI 실패 100% 제거</li>
+              <li><strong>QA 조직 전면 재편</strong> — CS 겸임·아르바이트 중심 구조를 정규직 2인·계약직 2인 전문 조직으로 전환, 역할과 책임 체계 수립</li>
+              <li><strong>자동화 0→969건 구축</strong> — ISO 25010 기반 11-컬럼 TC 표준 설계, 블랙박스 5기법 적용 / API 446건 · 웹 272건 · 모바일 251건</li>
+              <li><strong>배포 검증 2~3시간 → 1분</strong> — Preview→Beta→Production 3단계 품질 게이트 + 환경별 자동 분기(API_ENV) + skipOnProd 패턴</li>
+              <li><strong>AI TC 자동생성 파이프라인 구축</strong> — 3관점 검증 + 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류로 TC 생성 공수 58% 절감 (6일→2.5일)</li>
+              <li><strong>Claude Code 워크플로우 설계</strong> — Slash Commands·Hooks·MCP(도구 26종)·커스텀 Skills 12개로 TC 생성부터 배포 검증까지 자동화</li>
+              <li><strong>QA 대시보드 + CI 안정화</strong> — Allure + GitHub Pages 자동 배포, OAuth 토큰 자동 발급으로 CI 실패 0건 유지</li>
             </ul>
           </div>
         </div>
@@ -663,10 +475,10 @@
             <div class="git-company">머스트잇<small>명품 커머스 · QA Engineer</small></div>
             <div class="git-role">Commerce · QA 조직 신설 + 프로세스 표준화</div>
             <ul class="git-bullets">
-              <li><strong>QA 조직 신설 + 환경 분리</strong> — Dev/Prod → Dev/QA/STG/Prod 4단계, Hot-fix 악순환 해결</li>
-              <li><strong>4단계 프로세스 표준화</strong> — 기획→Acceptance→Regression→STG, 7대 의사결정 항목</li>
-              <li><strong>Jira 워크플로우 자동화</strong> — MSQA 프로젝트 신설, Product→QA→Dev 자동 복제</li>
-              <li><strong>서비스 개편 QA 리딩</strong> — AIO Tool, Bug Triage/Issue Freeze/Release 프로세스</li>
+              <li><strong>QA 조직 신설 + 환경 분리</strong> — 개발팀 겸임 구조에서 독립 QA팀 분리, Dev/QA/STG/Prod 4단계 환경 구축으로 긴급 배포 반복 사이클 제거</li>
+              <li><strong>4단계 검증 프로세스 정립</strong> — 기획→인수→회귀→스테이징 흐름 표준화, 배포 판단 기준 7개 항목 문서화</li>
+              <li><strong>Jira 워크플로우 자동화</strong> — 전용 프로젝트 신설, Product→QA→Dev 이슈 자동 복제</li>
+              <li><strong>서비스 전반 개편 QA 주도</strong> — 메인홈·카테고리·상품·필터 등 개편, 정기 배포 안정화</li>
             </ul>
           </div>
         </div>
@@ -677,11 +489,12 @@
           <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
           <div>
             <div class="git-company">그라운드엑스<small>Klaytn · QA Engineer</small></div>
-            <div class="git-role">Blockchain · 클립 지갑 · NFT</div>
+            <div class="git-role">블록체인 · 클립 지갑 · NFT</div>
             <ul class="git-bullets">
-              <li><strong>클립 지갑 Full Coverage QA</strong> — App/Web/Server/BOF/bapp SDK 5계층, BDD 3단계 문서 체계</li>
-              <li><strong>카카오톡 지갑-NFT 연동</strong> — 상태전이 기법으로 인증 실패/만료/재시도 플로우 안정화</li>
-              <li><strong>NFT 테스트 데이터 자동화</strong> + QA 외주 관리 (선정/NDA/리뷰)</li>
+              <li><strong>클립 지갑 전 계층 QA 설계</strong> — 앱·웹·서버·BOF·bapp SDK 5계층 커버리지, BDD 기반 3단계 문서 체계 수립</li>
+              <li><strong>카카오톡 지갑-NFT 연동 검증</strong> — 상태전이 기법으로 인증 실패·만료·재시도 시나리오 전수 검증</li>
+              <li><strong>NFT 테스트 데이터 생성 자동화</strong> — 수동 생성 20분→2분, 대량 민팅 스크립트로 성능 테스트 데이터셋 확보</li>
+              <li><strong>외주 QA 운영</strong> — 업체 선정·NDA 계약·리소스 배분, 외주 운영 비용 40% 절감</li>
             </ul>
           </div>
         </div>
@@ -692,11 +505,11 @@
           <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
           <div>
             <div class="git-company">야놀자Tech<small>R&D · QA Engineer</small></div>
-            <div class="git-role">Travel/Hospitality · 데일리호텔</div>
+            <div class="git-role">Travel · 데일리호텔</div>
             <ul class="git-bullets">
-              <li><strong>회원가입 완료율 20%↑</strong> — 동등분할·경계값으로 이탈 지점 식별 (마케팅/데이터 조직 성과 기준)</li>
-              <li><strong>초기 결함 검출률 40%↑</strong> — 테스트 기법(동치분할/경계값/상태전이) 팀 표준 적용</li>
-              <li><strong>팀 워크플로우 표준화</strong> — TC 재정비, 프로젝트 진척도 및 이슈 커뮤니케이션 비용 절감</li>
+              <li><strong>TC 부재 상태에서 전체 재정비</strong> — 포인트·리뷰·결제수단 영역 TC 0에서 신규 작성 및 체계화</li>
+              <li><strong>회원가입 완료율 20%↑</strong> — 동등분할·경계값 분석으로 이탈 지점 식별, 결과를 마케팅·데이터 조직과 공유</li>
+              <li><strong>초기 결함 검출률 40%↑</strong> — 동치분할·경계값·상태전이 기법을 팀 표준으로 정착</li>
             </ul>
           </div>
         </div>
@@ -704,14 +517,14 @@
         <!-- 이우소프트 -->
         <div class="git-log-entry">
           <div class="git-hash">2016.12—<br>2020.03</div>
-          <div class="git-graph"><div class="git-dot past"></div></div>
+          <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
           <div>
             <div class="git-company">이우소프트<small>AI MedTech · QA Engineer</small></div>
-            <div class="git-role">Medical AI · X-ray · FDA/식약처</div>
+            <div class="git-role">의료 AI · X-ray · FDA/식약처 인증</div>
             <ul class="git-bullets">
-              <li><strong>AI 의료 진단 QA → 2019 대한민국 SW 기술대상 수상</strong> 기여, FDA/식약처 인증 TC 설계</li>
-              <li><strong>X-ray Detector 연동 SW 검증</strong> — HW-SW 인터페이스 TC 설계, 장비 출시 기여</li>
-              <li><strong>품질 프로세스 체계화</strong> — 단계별 TC 자동화, 외주 테스터 워크플로우 통일</li>
+              <li><strong>AI 의료 진단 소프트웨어 QA</strong> — FDA·식약처 인증 TC 설계, 2019 대한민국 SW 기술대상 수상 프로젝트</li>
+              <li><strong>X-ray Detector 연동 검증</strong> — HW-SW 인터페이스 TC 설계, 무선 Detector 장비 양산 출시 지원</li>
+              <li><strong>3단계 품질 프로세스 수립</strong> — Alpha→Beta→FCS 단계별 TC 기준 정의, Selenium/Python 자동화 도입</li>
             </ul>
           </div>
         </div>
@@ -722,12 +535,11 @@
           <div class="git-graph"><div class="git-dot past"></div></div>
           <div>
             <div class="git-company">아이온커뮤니케이션즈<small>CMS · QA Engineer</small></div>
-            <div class="git-role">CMS 솔루션 · 비대면 계약 서비스 · 일본 시장</div>
+            <div class="git-role">CMS 솔루션 · 비대면 계약 · 일본 시장</div>
             <ul class="git-bullets">
-              <li><strong>CMS 일본향 서비스 품질 관리</strong> — Windows/Unix 기반 웹솔루션, ISO 9126 품질 특성 기반 테스트 계획 수립, 일본 시장점유율 18.8% 매출 1위(2015~2016) 기여</li>
-              <li><strong>비대면 계약 서식 e.Form io</strong> — StandAlone → AWS 클라우드 서비스 확장, Waterfall → Agile 전환 대응, 다국어(일/한) 산출물 동시 배포</li>
-              <li><strong>일본 고객 VOC 70% 대응</strong> — 일본어 직번역으로 대응 시간 단축, 일본 총판(아시스토) 협업 버전 관리</li>
-              <li><strong>PM + QA + Technical Writer</strong> — 프로젝트 일정 관리, 테크니컬/운영/사용자 가이드 일·국문 작성 및 배포</li>
+              <li><strong>일본향 CMS 품질 관리</strong> — ISO 9126 기반 테스트 계획, 일본 시장 매출 1위 기간(2015~2016) 품질 담당</li>
+              <li><strong>비대면 계약 서식 e.Form io 검증</strong> — 온프레미스→AWS 전환, Agile 전환 시 QA 프로세스 재설계</li>
+              <li><strong>일본 고객 VOC 직접 대응 (70%)</strong> — 일본어 원문 번역·분석, PM·QA·기술 문서 작성 겸임</li>
             </ul>
           </div>
         </div>
@@ -737,7 +549,7 @@
 
     <div class="divider">───────────────────────────────────────────────────────────────────────</div>
 
-    <!-- ══════════════ ls -la projects/ ══════════════ -->
+    <!-- ls -la projects/ -->
     <div class="cmd fade-cmd" id="projects">
       <div class="cmd-line">
         <span class="prompt"><span class="prompt-dollar">$</span></span>
@@ -759,8 +571,8 @@
               <td class="ls-size">969 TC</td>
               <td class="hide-mobile" style="color:var(--muted)">2024-07</td>
               <td>
-                <div class="ls-name"><a href="work.html" target="_blank">full-layer-automation/</a></div>
-                <div class="ls-desc">TC 전무 → 3계층 × 3서비스 자동화, 배포 검증 2~3h→1m, 22h/w 절감</div>
+                <div class="ls-name"><a href="work.html" target="_blank">전 계층 자동화 구축/</a></div>
+                <div class="ls-desc">TC 전무 → 3계층 × 3서비스 자동화, 배포 검증 2~3시간→1분, 주당 22시간 절감</div>
                 <div class="ls-tags">
                   <span class="ls-tag">pytest</span>
                   <span class="ls-tag">Playwright</span>
@@ -780,8 +592,8 @@
               <td class="ls-size">250+ TC</td>
               <td class="hide-mobile" style="color:var(--muted)">2025-01</td>
               <td>
-                <div class="ls-name"><a href="work.html" target="_blank">ai-tc-pipeline/</a></div>
-                <div class="ls-desc">TC 생성 6d→2.5d(58%↓), 정확도 60%→80%, 23개 기준 자가검증 + UNCLEAR 3-Bucket</div>
+                <div class="ls-name"><a href="work.html" target="_blank">AI TC 자동생성 파이프라인/</a></div>
+                <div class="ls-desc">TC 생성 6일→2.5일 (58%↓), 정확도 60%→80%, 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류</div>
                 <div class="ls-tags">
                   <span class="ls-tag">Claude Code</span>
                   <span class="ls-tag">BDD</span>
@@ -798,8 +610,8 @@
               <td class="ls-size">—</td>
               <td class="hide-mobile" style="color:var(--muted)">2024-10</td>
               <td>
-                <div class="ls-name"><a href="work.html" target="_blank">qa-dashboard/</a></div>
-                <div class="ls-desc">스프린트 TC 실시간 관리, 결과 공유 30m→0m(자동), Slack 알림 5분 내 대응</div>
+                <div class="ls-name"><a href="work.html" target="_blank">QA 대시보드/</a></div>
+                <div class="ls-desc">스프린트 TC 실시간 현황 관리, 결과 공유 30분→0분 자동화, Slack 알림 5분 내 대응 체계</div>
                 <div class="ls-tags">
                   <span class="ls-tag">GitHub Pages</span>
                   <span class="ls-tag">GitHub Actions</span>
@@ -818,7 +630,7 @@
 
     <div class="divider">───────────────────────────────────────────────────────────────────────</div>
 
-    <!-- ══════════════ cat credentials.txt ══════════════ -->
+    <!-- cat credentials.txt -->
     <div class="cmd fade-cmd">
       <div class="cmd-line">
         <span class="prompt"><span class="prompt-dollar">$</span></span>
@@ -830,7 +642,7 @@
           <span class="cred-year">2018</span>
         </div>
         <div class="cred-item">
-          <span class="cred-name">JLPT 2급 · OPIc 일본어 AL — 일본어 업무 능통</span>
+          <span class="cred-name">JLPT 2급 · OPIc 일본어 AL — 업무 수준 일본어 구사</span>
           <span class="cred-year">—</span>
         </div>
         <div class="cred-item">
@@ -840,7 +652,6 @@
       </div>
     </div>
 
-    <!-- ══════════════ Footer ══════════════ -->
     <div class="footer-exit">
       <div>
         <span class="prompt"><span class="prompt-dollar">$</span></span>
@@ -849,22 +660,18 @@
       <div class="footer-pid">logout · session closed · last login: today from portfolio</div>
     </div>
 
-  </div><!-- terminal-body -->
-</div><!-- terminal -->
+  </div>
+</div>
 
 <script>
-// Intersection Observer for fade-in
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.fade-cmd').forEach(el => observer.observe(el));
 
-// Tab active state on scroll
 const tabs = document.querySelectorAll('.terminal-tab');
 const sections = ['whoami', 'skills', 'experience', 'projects'];
 
@@ -876,11 +683,8 @@ window.addEventListener('scroll', () => {
   });
   tabs.forEach(tab => {
     const href = tab.getAttribute('href');
-    if (href === '#' + current) {
-      tab.classList.add('active');
-    } else if (href.startsWith('#')) {
-      tab.classList.remove('active');
-    }
+    if (href === '#' + current) tab.classList.add('active');
+    else if (href.startsWith('#')) tab.classList.remove('active');
   });
 });
 </script>

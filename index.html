@@ -428,14 +428,16 @@
         <div><span class="tree-branch">│   ├── </span><span class="tree-badge gold">ISTQB CTFL</span> <span class="tree-badge">테스트 전략 수립</span> <span class="tree-badge">BDD / GWT</span></div>
         <div><span class="tree-branch">│   └── </span><span class="tree-badge">결함 라이프사이클 관리</span> <span class="tree-badge">근본 원인 분석</span> <span class="tree-badge">Agile / Scrum</span></div>
         <div><span class="tree-branch">├── </span><span class="tree-dir">자동화/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge">pytest</span> <span class="tree-badge">Playwright TS</span> <span class="tree-badge">Maestro</span> <span class="tree-badge">Appium</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">AI 워크플로우/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">Claude Code</span> <span class="tree-badge">Cursor</span> <span class="tree-badge">명세 기반 개발</span> <span class="tree-badge">에이전트 리뷰</span> <span class="tree-badge">AI TC 파이프라인</span></div>
+        <div><span class="tree-branch">│   └── </span><span class="tree-badge">pytest</span> <span class="tree-badge">Playwright TS</span> <span class="tree-badge">Maestro</span> <span class="tree-badge">Appium</span> <span class="tree-badge gold">Behave (BDD)</span></div>
+        <div><span class="tree-branch">├── </span><span class="tree-dir">디버깅 · 분석/</span></div>
+        <div><span class="tree-branch">│   └── </span><span class="tree-badge">Visual Regression</span> <span class="tree-badge">응답시간 모니터링</span> <span class="tree-badge">자동 스크린샷</span> <span class="tree-badge">환경별 CUD Guard</span></div>
+        <div><span class="tree-branch">├── </span><span class="tree-dir">AI · Claude Code/</span></div>
+        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">Claude Code</span> <span class="tree-badge gold">Codex MCP 26종</span> <span class="tree-badge">Plugins 16종</span> <span class="tree-badge">Hooks 9개</span> <span class="tree-badge">커스텀 Commands 19개</span></div>
         <div><span class="tree-branch">├── </span><span class="tree-dir">인프라 · 도구/</span></div>
         <div><span class="tree-branch">│   └── </span><span class="tree-badge">GitHub Actions</span> <span class="tree-badge">Allure</span> <span class="tree-badge">Jira</span> <span class="tree-badge">Confluence</span> <span class="tree-badge">AIO</span></div>
         <div><span class="tree-branch">└── </span><span class="tree-dir">언어/</span></div>
         <div><span class="tree-branch">    └── </span><span class="tree-badge">Python</span> <span class="tree-badge">TypeScript</span> <span class="tree-badge">SQL</span></div>
-        <div style="margin-top:6px;"><span class="output-dim">5 directories, 23 skills</span></div>
+        <div style="margin-top:6px;"><span class="output-dim">7 directories, 33 skills</span></div>
       </div>
     </div>
 
@@ -458,9 +460,11 @@
             <div class="git-role">PropTech · 3개 서비스 · 자동화 파이프라인 + AI TC 생성 구축</div>
             <ul class="git-bullets">
               <li><strong>3계층 TC 아키텍처 설계 · 자동화 0→969건</strong> — ISO 25010 기반 11-컬럼 TC 표준 수립, 블랙박스 5기법 적용 / API 446건 · 웹 272건 · 모바일 251건</li>
+              <li><strong>Behave BDD 하네스 엔지니어링</strong> — 한글 Gherkin 437 시나리오, Orchestrator로 멀티 환경(prod/preview/beta)×스택(web/api/app) 병렬 실행, TC↔Feature 자동 변환 엔진 구축</li>
               <li><strong>배포 검증 2~3시간 → 1분</strong> — Preview→Beta→Production 3단계 품질 게이트 + 환경별 자동 분기(API_ENV) + skipOnProd 패턴</li>
+              <li><strong>테스트 디버깅 인프라 구축</strong> — 실패 시 자동 스크린샷 캡처, API 응답시간 모니터링(3초 임계치), Visual Regression 픽셀 비교, 토큰 자동 갱신, 환경별 CUD 안전 가드</li>
               <li><strong>AI TC 자동생성 파이프라인 구축</strong> — 3관점 검증 + 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류로 TC 생성 공수 58% 절감 (6일→2.5일)</li>
-              <li><strong>Claude Code 워크플로우 설계</strong> — Slash Commands·Hooks·MCP(도구 26종)·커스텀 Skills 12개로 TC 생성부터 배포 검증까지 자동화</li>
+              <li><strong>Claude Code 자동화 생태계 구축</strong> — 플러그인 16종·커맨드 19개·Hooks 9개·Codex MCP(26개 도구)로 PRD 분석→TC 생성→자동화→배포 엔드-투-엔드 파이프라인</li>
               <li><strong>QA 대시보드 + CI 안정화</strong> — Allure + GitHub Pages 자동 배포, OAuth 토큰 자동 발급으로 CI 실패 0건 유지</li>
             </ul>
           </div>

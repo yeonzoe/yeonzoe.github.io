@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>연향주 — QA Manager Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --text-secondary: #444;
+      --text-muted: #999;
+      --accent: #0a6e61;
+      --accent-light: #eaf4f2;
+      --border: #e0e0e0;
+      --sans: 'IBM Plex Sans KR', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    @media print {
+      body { font-size: 10pt; }
+      .no-print { display: none !important; }
+      a { color: var(--text) !important; text-decoration: none !important; }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13.5px;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 52px 44px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 28px;
+    }
+    .header-left h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .header-left .subtitle {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-top: 5px;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+    .header-right a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── Print Button ── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .print-btn:hover { opacity: 0.88; }
+
+    /* ── Summary ── */
+    .summary {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 32px;
+      padding: 16px 20px;
+      background: var(--accent-light);
+      border-radius: 5px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 28px; }
+    .section-title {
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Experience ── */
+    .exp { margin-bottom: 22px; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .exp-company-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .exp-company-name small {
+      font-weight: 400;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .exp-role {
+      font-size: 12.5px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 9px;
+    }
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+    }
+    .exp-bullets li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.72;
+      margin-bottom: 4px;
+    }
+    .exp-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .exp-bullets li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .exp-subhead {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 8px 0 4px 0;
+    }
+    .num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Skills ── */
+    .skills-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 5px 16px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .skills-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      padding-top: 1px;
+    }
+    .skills-value { color: var(--text-secondary); }
+
+    /* ── Certs / Education ── */
+    .cert-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+    .cert-name { color: var(--text); font-weight: 500; }
+    .cert-year { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>연향주</h1>
+    <div class="subtitle">QA MANAGER · 13+ YEARS</div>
+  </div>
+  <div class="header-right">
+    <a href="mailto:hjyeon@naver.com">hjyeon@naver.com</a><br>
+    <a href="https://github.com/yeonzoe">github.com/yeonzoe</a><br>
+    <a href="https://yeonzoe.github.io">yeonzoe.github.io</a>
+  </div>
+</div>
+
+<div class="summary">
+  6개사에서 QA 조직을 <strong>처음부터 설계·운영</strong>해온 매니저 — 1인 QA·아르바이트 구조에서 정규직 전문 조직으로의 리빌딩을 4회 수행.<br>
+  배포 프로세스 안정화 · 외주 운영 · R&amp;R 설계 · 운영 이슈 보고 체계까지 조직 전 영역 직접 정립.<br>
+  자동화 <span class="num">969건</span>을 직접 설계·구현하고, Claude Code 기반 AI QA 파이프라인까지 운영 — 코드 레벨에서 의사결정하는 <strong>플레잉 매니저</strong>.<br>
+  현재 직방·호갱노노·다음부동산 3개 서비스 QA 총괄, 수동 공수 <span class="num">58% 절감</span>.
+</div>
+
+<!-- Experience -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">직방 <small>ZIGBANG Co., Ltd</small></span>
+      <span class="exp-period">2024.07 — 현재</span>
+    </div>
+    <div class="exp-role">QA Manager · 팀장 · 1년 10개월</div>
+
+    <div class="exp-subhead">조직 빌딩</div>
+    <ul class="exp-bullets">
+      <li><strong>QA 조직 전면 리빌딩</strong> — CS 겸임·시간제 아르바이트 구조 → 정규직 2인 + 계약직 2인 전문 조직으로 전환, R&amp;R 정의</li>
+      <li><strong>소속 조직 이동 협상·실행</strong> — 서비스 운영 조직 → Tech 조직, QA 활동 범위를 운영 업무에서 서비스 품질 전반으로 확장</li>
+      <li><strong>QA 외주 업체 계약·운영 관리</strong> — 업체 선정 · NDA · 리소스 배분 · 산출물 리뷰</li>
+      <li><strong>테스트 디바이스 자산 관리 체계 구축</strong> — 업무용 디바이스 대여 프로세스 정립</li>
+    </ul>
+
+    <div class="exp-subhead">배포·운영 프로세스</div>
+    <ul class="exp-bullets">
+      <li><strong>스프린트·배포 주기 구조 개편</strong> — 배포 시나리오별 QA 서포트 구조 정립</li>
+      <li><strong>모니터링 관제 → AI 모니터링 구조 전환</strong> — 운영 알람 노이즈 감소 및 장애 감지 정확도 개선</li>
+      <li><strong>직방/호갱노노 이슈 등록·관리 체계 통합</strong> — 서비스 간 표준화</li>
+    </ul>
+
+    <div class="exp-subhead">엔지니어링 산출물</div>
+    <ul class="exp-bullets">
+      <li><strong>자동화 0 → 969건 구축</strong> — Playwright(TS) 웹 <span class="num">272</span> · pytest API <span class="num">446</span> · Maestro 모바일 <span class="num">251</span>. ISO 25010 기반 11-컬럼 TC 표준 정의, 블랙박스 5기법 적용</li>
+      <li><strong>3단계 CI 품질 게이트</strong> — Preview → Beta → Production 자동 검증, Allure 대시보드 자동 배포, Slack 장애 알림 연동</li>
+      <li><strong>AI 기반 TC 자동생성 파이프라인</strong> — Claude Code Slash Commands · Hooks · MCP 도구 26종 · 커스텀 Skills 12개 직접 구현, 수동 공수 <span class="num">58% 절감</span></li>
+      <li><strong>QA 대시보드 구축</strong> — 스프린트 단위 TC 실시간 현황, GitHub Actions 자동 동기화, Allure·Slack 리포팅 통합</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">머스트잇 <small>명품 커머스</small></span>
+      <span class="exp-period">2023.10 — 2024.06</span>
+    </div>
+    <div class="exp-role">QA Manager · 팀장 · 9개월</div>
+    <ul class="exp-bullets">
+      <li><strong>QA 조직 신설</strong> — 개발팀 겸임 구조 → 독립 QA팀 분리, Jira 전용 프로젝트 + 이슈 자동 복제 워크플로우</li>
+      <li><strong>QA 전용 테스트 환경 구축</strong> — QA/Staging 인프라 분리, Apple Enterprise Membership 추가 가입, App 디버깅 환경 정비로 긴급 배포 반복 사이클 제거</li>
+      <li><strong>4단계 검증 프로세스 표준화</strong> — 기획 → 인수 → 회귀 → 스테이징, 배포 판단 기준 <span class="num">7항목</span> 문서화</li>
+      <li><strong>전사 테스트 관리 툴 도입</strong> — AIO Test Management Tool 선정·전파, Kick-Off부터 Sign-Off까지 템플릿 정립</li>
+      <li><strong>운영 이슈 보고 프로세스 정립</strong> — Jira/메일/DM 분산 소통 → 조직별 채널 기반 빠른 전파, 영향 범위 공유 템플릿 전사 적용</li>
+      <li><strong>배포 버전 관리 방식 개선</strong> — BE/FE/Native App 통합 버전 관리(프로젝트 명 기반)</li>
+      <li>메인홈 · 카테고리 · GNB · 상품목록/상세 · 필터 · 찜 페이지 전면 개편 프로젝트 SDLC 리딩 (PO 없는 Agile 구조 대응)</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">그라운드엑스 <small>Ground X · Klaytn</small></span>
+      <span class="exp-period">2022.03 — 2023.10</span>
+    </div>
+    <div class="exp-role">QA Manager · 파트 리드 · 1년 8개월</div>
+    <ul class="exp-bullets">
+      <li><strong>외주 QA 운영 체계 구축</strong> — 업체 선정 · NDA · 프로젝트 단위 리소스 산정 · 가이드 제공, 외주 운영 비용 <span class="num">40% 절감</span></li>
+      <li><strong>QA 공유 문화 형성</strong> — Daily Scrum · 주간 보고 · 프로젝트별 회고 정착</li>
+      <li><strong>클립 지갑 5계층 통합 QA 설계</strong> — 앱 · 웹 · 서버 · BOF · bapp SDK Full Coverage TC + 쿠버네티스 대시보드 활용 서버 환경 검증</li>
+      <li><strong>BDD 기반 3단계 문서 체계 수립</strong> — 체크리스트 · 테스트케이스 · 시나리오 구분, 테스트 시나리오 선행 후 BDD TC 작성으로 템플릿 통일</li>
+      <li><strong>NFT 테스트 데이터 생성 자동화</strong> — 수동 <span class="num">20분 → 2분</span>, 유관 부서 요청 대응 시간 단축</li>
+      <li><strong>NFT 임베디드 단말기 연동 서비스 런칭 전담</strong> — NFC 인식·체크인 펌웨어/SW 연동 테스트 계획·수행</li>
+      <li><strong>카카오톡 지갑-NFT 연동 검증</strong> — 상태전이 기법으로 인증 실패·만료·재시도 시나리오 전수 검증</li>
+      <li>토큰 스왑 · 멀티체인 · 오픈월렛 · NFT 체크인/에어드랍 · Bapp API Service 신규 기능 런칭 QA 주도</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">야놀자Tech <small>R&amp;D</small></span>
+      <span class="exp-period">2020.10 — 2022.03</span>
+    </div>
+    <div class="exp-role">QA Manager · 1년 6개월</div>
+    <ul class="exp-bullets">
+      <li><strong>회원가입 완료율 <span class="num">20% 개선</span></strong> — 동등분할·경계값 분석으로 이탈 지점 식별, 멤버급 등급 상향 사용자 <span class="num">30% 증가</span></li>
+      <li><strong>초기 결함 검출률 <span class="num">40% 상승</span></strong> — 동치분할·경계값·상태전이 기법을 팀 표준으로 정착</li>
+      <li><strong>데일리호텔 통합 TC 0건 → 전수 재설계</strong> — 포인트 · 트루리뷰 · 서브홈 · 신규 컴포넌트 · 결제수단 영역 TC 신규 작성·체계화</li>
+      <li>상품/회원 영역 품질 프로세스 산출물 재정비, 워크플로우 통일로 커뮤니케이션 비용 절감</li>
+      <li>이해관계자 간 진척도·이슈 에스컬레이션 규칙 정의</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">이우소프트</span>
+      <span class="exp-period">2016.12 — 2020.03</span>
+    </div>
+    <div class="exp-role">QA Manager · 3년 4개월</div>
+    <ul class="exp-bullets">
+      <li><strong>AI 의료 진단 SW QA</strong> — FDA · 식약처 의료 인증 TC 설계 및 획득, <strong>2019 대한민국 SW 기술대상 수상</strong> 프로젝트 참여</li>
+      <li><strong>Selenium · Python 자동화 도입</strong> — 반복 수행 TC 자동화로 수행 시간 단축</li>
+      <li><strong>3단계 품질 프로세스 수립</strong> — Alpha → Beta → FCS 단계별 TC 기준 정의</li>
+      <li><strong>Windows App/Server 품질 프로세스 산출물 재정비</strong> — 외주 테스터 커뮤니케이션 비용 절감, 이해관계자 간 정보 공개</li>
+      <li><strong>X-ray Detector HW-SW 인터페이스 검증 프로세스 수립</strong> — 무선 Detector 장비 양산 출시 지원, 경주마 X-ray 검사 시간 단축</li>
+    </ul>
+  </div>
+
+  <div class="exp">
+    <div class="exp-header">
+      <span class="exp-company-name">아이온커뮤니케이션즈 <small>CMS 솔루션</small></span>
+      <span class="exp-period">2012.07 — 2016.11</span>
+    </div>
+    <div class="exp-role">QA Manager · 4년 5개월</div>
+    <ul class="exp-bullets">
+      <li><strong>일본향 CMS 솔루션 ISO 9126 기반 품질 관리</strong> — 일본 시장 매출 1위(2015~2016) 기간 품질 담당, 시장 점유율 <span class="num">18.8%</span></li>
+      <li><strong>비대면 계약 e.Form io 온프레미스 → AWS 클라우드 전환 검증</strong> — Waterfall → Agile 방법론 전환 시 QA 프로세스 재설계, 일본 아시스토 대형 고객사 창출</li>
+      <li><strong>일본 고객 VOC <span class="num">70%</span> 직접 대응</strong> — 일본어 원문 분석·번역, 기술 문서 작성 겸임</li>
+      <li>국내·해외 고객 VOC 대응, 일본어 산출물 작성 및 고객 대응 페이지 국/일문 번역</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Skills -->
+<div class="section">
+  <div class="section-title">Skills</div>
+  <div class="skills-row">
+    <span class="skills-label">리더십</span>
+    <span class="skills-value">QA 조직 빌딩(0→1, 1→N), 외주 운영·계약 관리, R&amp;R 설계, 배포 프로세스 정립, 이슈 에스컬레이션 규칙, 이해관계자 커뮤니케이션, 회고·공유 문화 정립</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">테스트 설계</span>
+    <span class="skills-value">블랙박스 5기법(동등분할 · 경계값 · 결정테이블 · 상태전이 · 유스케이스), BDD(Given-When-Then), Risk-Based Testing, Test Pyramid, 품질 게이트 설계, ISO 25010 / ISO 9126</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">자동화</span>
+    <span class="skills-value">Playwright (TypeScript), pytest, Maestro, Appium, Selenium, REST Assured, Newman, Allure</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">API 테스트</span>
+    <span class="skills-value">Postman, Newman, pytest + requests, OpenAPI/Swagger 검증</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">디버깅</span>
+    <span class="skills-value">HTTP Toolkit (HTTPS 프록시 · 요청 재현), Flipper (iOS · Android), Charles Proxy, Xcode, Android Studio</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">AI 워크플로우</span>
+    <span class="skills-value">Claude Code (Slash Commands · Hooks · MCP 도구 26종 · 커스텀 Skills 직접 구현), Cursor, Spec-Driven Development, AI TC 자동생성 파이프라인</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">CI / CD</span>
+    <span class="skills-value">GitHub Actions, Slack Webhook, Preview/Beta/Production 멀티 스테이지 품질 게이트</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">언어 · DB</span>
+    <span class="skills-value">Python, TypeScript, JavaScript, SQL (Oracle · PostgreSQL · MongoDB), Git, Linux</span>
+  </div>
+  <div class="skills-row">
+    <span class="skills-label">도메인</span>
+    <span class="skills-value">PropTech(부동산), 커머스(명품·여행·숙박), 핀테크(블록체인·NFT 지갑), 의료 AI(FDA·식약처 규제), CMS(B2B 일본)</span>
+  </div>
+</div>
+
+<!-- Education -->
+<div class="section">
+  <div class="section-title">Education</div>
+  <div class="cert-item">
+    <span class="cert-name">한국교통대학교 — 컴퓨터과학과 (졸업)</span>
+    <span class="cert-year">2008 — 2010</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">경북전문대학 — 디지털방송영상학과 (졸업)</span>
+    <span class="cert-year">2004 — 2006</span>
+  </div>
+</div>
+
+<!-- Credentials -->
+<div class="section">
+  <div class="section-title">Credentials</div>
+  <div class="cert-item">
+    <span class="cert-name">ISTQB CTFL — 국제 소프트웨어 테스팅 자격</span>
+    <span class="cert-year">2018</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">PMBOK 6.0 · BABOK 3.0 · Agile/Scrum/Lean/Kanban (KOSTA)</span>
+    <span class="cert-year">2018</span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">JLPT 2급 · OPIc 일본어 AL — 업무 수준 일본어 구사</span>
+    <span class="cert-year"></span>
+  </div>
+  <div class="cert-item">
+    <span class="cert-name">HTA Enterprise JAVA Developer 과정 (중앙일보, 6개월)</span>
+    <span class="cert-year">2010</span>
+  </div>
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">PDF로 저장 (Cmd+P)</button>
+
+</body>
+</html>

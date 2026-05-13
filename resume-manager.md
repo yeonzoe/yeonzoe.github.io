@@ -1,0 +1,121 @@
+# 연향주 — QA Manager
+
+**QA MANAGER · 13+ YEARS**
+
+- 📧 hjyeon@naver.com
+- 🐙 github.com/yeonzoe
+- 🔗 yeonzoe.github.io
+
+---
+
+## Summary
+
+6개사에서 QA 조직을 **처음부터 설계·운영**해온 매니저 — 1인 QA·아르바이트 구조에서 정규직 전문 조직으로의 리빌딩을 4회 수행.
+배포 프로세스 안정화 · 외주 운영 · R&R 설계 · 운영 이슈 보고 체계까지 조직 전 영역 직접 정립.
+자동화 **969건**을 직접 설계·구현하고, Claude Code 기반 AI QA 파이프라인까지 운영 — 코드 레벨에서 의사결정하는 **플레잉 매니저**.
+현재 직방·호갱노노·다음부동산 3개 서비스 QA 총괄, 수동 공수 **58% 절감**.
+
+---
+
+## Experience
+
+### 직방 (ZIGBANG Co., Ltd) — QA Manager · 팀장
+`2024.07 — 현재 · 1년 10개월`
+
+**조직 빌딩**
+- **QA 조직 전면 리빌딩** — CS 겸임·시간제 아르바이트 구조 → 정규직 2인 + 계약직 2인 전문 조직으로 전환, R&R 정의
+- **소속 조직 이동 협상·실행** — 서비스 운영 조직 → Tech 조직, QA 활동 범위를 운영 업무에서 서비스 품질 전반으로 확장
+- **QA 외주 업체 계약·운영 관리** — 업체 선정 · NDA · 리소스 배분 · 산출물 리뷰
+- **테스트 디바이스 자산 관리 체계 구축** — 업무용 디바이스 대여 프로세스 정립
+
+**배포·운영 프로세스**
+- **스프린트·배포 주기 구조 개편** — 배포 시나리오별 QA 서포트 구조 정립
+- **모니터링 관제 → AI 모니터링 구조 전환** — 운영 알람 노이즈 감소 및 장애 감지 정확도 개선
+- **직방/호갱노노 이슈 등록·관리 체계 통합** — 서비스 간 표준화
+
+**엔지니어링 산출물**
+- **자동화 0 → 969건 구축** — Playwright(TS) 웹 272 · pytest API 446 · Maestro 모바일 251. ISO 25010 기반 11-컬럼 TC 표준 정의, 블랙박스 5기법 적용
+- **3단계 CI 품질 게이트** — Preview → Beta → Production 자동 검증, Allure 대시보드 자동 배포, Slack 장애 알림 연동
+- **AI 기반 TC 자동생성 파이프라인** — Claude Code Slash Commands · Hooks · MCP 도구 26종 · 커스텀 Skills 12개 직접 구현, 수동 공수 **58% 절감**
+- **QA 대시보드 구축** — 스프린트 단위 TC 실시간 현황, GitHub Actions 자동 동기화, Allure·Slack 리포팅 통합
+
+### 머스트잇 (명품 커머스) — QA Manager · 팀장
+`2023.10 — 2024.06 · 9개월`
+
+- **QA 조직 신설** — 개발팀 겸임 구조 → 독립 QA팀 분리, Jira 전용 프로젝트 + 이슈 자동 복제 워크플로우
+- **QA 전용 테스트 환경 구축** — QA/Staging 인프라 분리, Apple Enterprise Membership 추가 가입, App 디버깅 환경 정비로 긴급 배포 반복 사이클 제거
+- **4단계 검증 프로세스 표준화** — 기획 → 인수 → 회귀 → 스테이징, 배포 판단 기준 **7항목** 문서화
+- **전사 테스트 관리 툴 도입** — AIO Test Management Tool 선정·전파, Kick-Off부터 Sign-Off까지 템플릿 정립
+- **운영 이슈 보고 프로세스 정립** — Jira/메일/DM 분산 소통 → 조직별 채널 기반 빠른 전파, 영향 범위 공유 템플릿 전사 적용
+- **배포 버전 관리 방식 개선** — BE/FE/Native App 통합 버전 관리(프로젝트 명 기반)
+- 메인홈 · 카테고리 · GNB · 상품목록/상세 · 필터 · 찜 페이지 전면 개편 프로젝트 SDLC 리딩 (PO 없는 Agile 구조 대응)
+
+### 그라운드엑스 (Ground X · Klaytn) — QA Manager · 파트 리드
+`2022.03 — 2023.10 · 1년 8개월`
+
+- **외주 QA 운영 체계 구축** — 업체 선정 · NDA · 프로젝트 단위 리소스 산정 · 가이드 제공, 외주 운영 비용 **40% 절감**
+- **QA 공유 문화 형성** — Daily Scrum · 주간 보고 · 프로젝트별 회고 정착
+- **클립 지갑 5계층 통합 QA 설계** — 앱 · 웹 · 서버 · BOF · bapp SDK Full Coverage TC + 쿠버네티스 대시보드 활용 서버 환경 검증
+- **BDD 기반 3단계 문서 체계 수립** — 체크리스트 · 테스트케이스 · 시나리오 구분, 테스트 시나리오 선행 후 BDD TC 작성으로 템플릿 통일
+- **NFT 테스트 데이터 생성 자동화** — 수동 **20분 → 2분**, 유관 부서 요청 대응 시간 단축
+- **NFT 임베디드 단말기 연동 서비스 런칭 전담** — NFC 인식·체크인 펌웨어/SW 연동 테스트 계획·수행
+- **카카오톡 지갑-NFT 연동 검증** — 상태전이 기법으로 인증 실패·만료·재시도 시나리오 전수 검증
+- 토큰 스왑 · 멀티체인 · 오픈월렛 · NFT 체크인/에어드랍 · Bapp API Service 신규 기능 런칭 QA 주도
+
+### 야놀자Tech (R&D) — QA Manager
+`2020.10 — 2022.03 · 1년 6개월`
+
+- **회원가입 완료율 20% 개선** — 동등분할·경계값 분석으로 이탈 지점 식별, 멤버급 등급 상향 사용자 **30% 증가**
+- **초기 결함 검출률 40% 상승** — 동치분할·경계값·상태전이 기법을 팀 표준으로 정착
+- **데일리호텔 통합 TC 0건 → 전수 재설계** — 포인트 · 트루리뷰 · 서브홈 · 신규 컴포넌트 · 결제수단 영역 TC 신규 작성·체계화
+- 상품/회원 영역 품질 프로세스 산출물 재정비, 워크플로우 통일로 커뮤니케이션 비용 절감
+- 이해관계자 간 진척도·이슈 에스컬레이션 규칙 정의
+
+### 이우소프트 — QA Manager
+`2016.12 — 2020.03 · 3년 4개월`
+
+- **AI 의료 진단 SW QA** — FDA · 식약처 의료 인증 TC 설계 및 획득, **2019 대한민국 SW 기술대상 수상** 프로젝트 참여
+- **Selenium · Python 자동화 도입** — 반복 수행 TC 자동화로 수행 시간 단축
+- **3단계 품질 프로세스 수립** — Alpha → Beta → FCS 단계별 TC 기준 정의
+- **Windows App/Server 품질 프로세스 산출물 재정비** — 외주 테스터 커뮤니케이션 비용 절감, 이해관계자 간 정보 공개
+- **X-ray Detector HW-SW 인터페이스 검증 프로세스 수립** — 무선 Detector 장비 양산 출시 지원, 경주마 X-ray 검사 시간 단축
+
+### 아이온커뮤니케이션즈 (CMS 솔루션) — QA Manager
+`2012.07 — 2016.11 · 4년 5개월`
+
+- **일본향 CMS 솔루션 ISO 9126 기반 품질 관리** — 일본 시장 매출 1위(2015~2016) 기간 품질 담당, 시장 점유율 **18.8%**
+- **비대면 계약 e.Form io 온프레미스 → AWS 클라우드 전환 검증** — Waterfall → Agile 방법론 전환 시 QA 프로세스 재설계, 일본 아시스토 대형 고객사 창출
+- **일본 고객 VOC 70% 직접 대응** — 일본어 원문 분석·번역, 기술 문서 작성 겸임
+- 국내·해외 고객 VOC 대응, 일본어 산출물 작성 및 고객 대응 페이지 국/일문 번역
+
+---
+
+## Skills
+
+| 영역 | 내용 |
+|---|---|
+| 리더십 | QA 조직 빌딩(0→1, 1→N), 외주 운영·계약 관리, R&R 설계, 배포 프로세스 정립, 이슈 에스컬레이션 규칙, 이해관계자 커뮤니케이션, 회고·공유 문화 정립 |
+| 테스트 설계 | 블랙박스 5기법(동등분할 · 경계값 · 결정테이블 · 상태전이 · 유스케이스), BDD, Risk-Based Testing, Test Pyramid, 품질 게이트 설계, ISO 25010 / ISO 9126 |
+| 자동화 | Playwright (TypeScript), pytest, Maestro, Appium, Selenium, REST Assured, Newman, Allure |
+| API 테스트 | Postman, Newman, pytest + requests, OpenAPI/Swagger 검증 |
+| 디버깅 | HTTP Toolkit, Flipper (iOS·Android), Charles Proxy, Xcode, Android Studio |
+| AI 워크플로우 | Claude Code (Slash Commands · Hooks · MCP 도구 26종 · 커스텀 Skills 직접 구현), Cursor, Spec-Driven Development, AI TC 자동생성 파이프라인 |
+| CI / CD | GitHub Actions, Slack Webhook, Preview/Beta/Production 멀티 스테이지 |
+| 언어 · DB | Python, TypeScript, JavaScript, SQL (Oracle · PostgreSQL · MongoDB), Git, Linux |
+| 도메인 | PropTech, 커머스(명품·여행·숙박), 핀테크(블록체인·NFT 지갑), 의료 AI(FDA·식약처), CMS(B2B 일본) |
+
+---
+
+## Education
+
+- **한국교통대학교** — 컴퓨터과학과 (졸업) · 2008 — 2010
+- **경북전문대학** — 디지털방송영상학과 (졸업) · 2004 — 2006
+
+---
+
+## Credentials
+
+- **ISTQB CTFL** — 국제 소프트웨어 테스팅 자격 · 2018
+- **PMBOK 6.0 · BABOK 3.0 · Agile/Scrum/Lean/Kanban** (KOSTA) · 2018
+- **JLPT 2급 · OPIc 일본어 AL** — 업무 수준 일본어 구사
+- **HTA Enterprise JAVA Developer 과정** (중앙일보, 6개월) · 2010

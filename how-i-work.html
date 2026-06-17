@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>연향주 — How I Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08090C; --surface: #10121A; --card: #161921; --card-hover: #1C1F2A;
+      --border: #242735; --border-light: #2E3245;
+      --accent: #3ECFBE; --accent-dim: rgba(62,207,190,0.12); --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.12);
+      --text: #DDE1EC; --text-secondary: #8B90A8; --text-muted: #555A72;
+      --serif: 'Inter','Noto Sans KR',sans-serif; --sans: 'Inter','Noto Sans KR',sans-serif; --mono: 'JetBrains Mono',monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text); font-family: var(--sans);
+      font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(62,207,190,0.04) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 40% at 0% 100%, rgba(62,207,190,0.03) 0%, transparent 55%);
+    }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 72px 48px 96px; position: relative; z-index: 1; }
+
+    /* Top bar */
+    .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 64px; }
+    .logo { font-family: var(--serif); font-size: 18px; font-weight: 700; }
+    .logo span { color: var(--accent); }
+    .back { font-family: var(--mono); font-size: 12px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    .back:hover { color: var(--accent); }
+
+    /* Header */
+    .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+    .label::before { content:''; width: 32px; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 68px); font-weight: 700; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .lead { font-size: 16px; color: var(--text-secondary); line-height: 1.85; max-width: 720px; font-family: 'Noto Sans KR', var(--sans); margin-bottom: 12px; }
+    .note { font-size: 13px; color: var(--text-muted); font-family: var(--mono); letter-spacing: 0.02em; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent); margin: 56px 0; }
+
+    /* Principles */
+    .principles { display: flex; flex-direction: column; gap: 18px; }
+    .p-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 26px 28px; display: grid; grid-template-columns: 54px 1fr; gap: 20px;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+    .p-card:hover { border-color: rgba(62,207,190,0.4); background: var(--card-hover); transform: translateY(-3px); }
+    .p-num { font-family: var(--serif); font-size: 30px; font-weight: 700; color: var(--accent); line-height: 1; font-style: italic; }
+    .p-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: 0.01em; }
+    .p-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.75; font-family: 'Noto Sans KR', var(--sans); }
+    .p-desc strong { color: var(--text); font-weight: 600; }
+    .p-why { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); font-family: 'Noto Sans KR', var(--sans); }
+    .p-why b { color: var(--accent); font-weight: 500; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; }
+
+    /* Cases */
+    .cases-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .cases-label::before { content:''; width: 22px; height: 1px; background: var(--accent); }
+    .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .c-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+      display: flex; flex-direction: column; gap: 12px; text-decoration: none; transition: all 0.3s;
+    }
+    .c-card:hover { border-color: rgba(62,207,190,0.4); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .c-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--accent-dim); border: 1px solid rgba(62,207,190,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .c-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .c-metric { font-family: var(--mono); font-size: 12px; color: var(--gold); }
+    .c-how { font-size: 13px; color: var(--text-secondary); line-height: 1.65; font-family: 'Noto Sans KR', var(--sans); flex: 1; }
+    .c-link { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.04em; }
+
+    footer { border-top: 1px solid var(--border); margin-top: 72px; padding-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+    .f-name { font-family: var(--serif); font-weight: 700; color: var(--text-secondary); }
+    .f-copy { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; }
+
+    @media (max-width: 860px) {
+      .wrap { padding: 48px 22px 72px; }
+      .cases { grid-template-columns: 1fr; }
+      .p-card { grid-template-columns: 1fr; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="logo">연향주<span>.</span></div>
+    <a class="back" href="index.html">← Portfolio</a>
+  </div>
+
+  <div class="label">How I Work</div>
+  <h1>어떻게 일하는가</h1>
+  <p class="lead">
+    13년차 QA 엔지니어가 AI 보조 개발(vibe coding) 환경에서 <strong style="color:var(--text)">품질과 속도를 동시에</strong> 잡는 방식.
+    실제 작업 레포의 규칙, 140+ 세션 핸드오프, 1,800+ 커밋에서 추출한 8가지 실행 원칙입니다.
+  </p>
+  <p class="note">※ 회사 내부 식별자 · 미공개 수치 · 내부 시스템 코드는 제외했습니다.</p>
+
+  <div class="divider"></div>
+
+  <div class="principles">
+
+    <div class="p-card">
+      <div class="p-num">01</div>
+      <div>
+        <div class="p-title">작업을 두 축으로 분리한다 — 규모 × 성격</div>
+        <div class="p-desc">모든 작업을 시작 전에 <strong>규모(L1–L4, 파일 수)</strong> 와 <strong>성격(L-구조 / L-부분 / L-질문)</strong> 두 독립 축으로 분류합니다. 구조를 바꾸는 변경(L-구조)은 규모와 무관하게 사전 승인을 받습니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;"작은 수정"이라며 저장 구조를 바꾸는 사고를 막습니다. 두 축은 독립적으로 통제되어야 합니다.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">02</div>
+      <div>
+        <div class="p-title">합의된 구조는 잠근다 — Structure Lock</div>
+        <div class="p-desc">설계 → <strong>잠금</strong> → 개발 → 해제. 구조가 확정되면 이후엔 L-부분/L-질문만 허용하고, L-구조 변경은 사용자가 명시 요청해야 풀립니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;저장 메커니즘을 임의로 3회 바꿔 전체 롤백한 경험. 기술 문제도 임의 변경 대신 보고 후 승인.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">03</div>
+      <div>
+        <div class="p-title">SPEC → Plan → 실행 — 바이브 코딩 금지</div>
+        <div class="p-desc">L3 이상 작업은 곧장 코딩하지 않습니다. <strong>요구사항·구조를 먼저 고정(SPEC)</strong>하고, 파일·변경 목록(Plan)을 승인받은 뒤 구현·검증·회고로 이어집니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;AI가 코드를 빠르게 쏟아낼수록 "무엇을 왜"의 합의가 없으면 표류합니다.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">04</div>
+      <div>
+        <div class="p-title">세션은 핸드오프로 잇는다</div>
+        <div class="p-desc">작업이 끝나면 완료 내용 · 남은 TODO · 다음 시작 방법 · 핵심 구조를 <strong>핸드오프 문서</strong>로 남깁니다(140+건 누적). 요구사항·결정 이력은 단일 진입점(SoT) 한 문서에 모읍니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;AI 세션은 컨텍스트가 리셋됩니다. 핸드오프가 긴 작업을 끊김 없이 잇습니다.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">05</div>
+      <div>
+        <div class="p-title">FP/FN 크로스 리뷰 — 과잉과 누락을 동시에</div>
+        <div class="p-desc">중요 산출물은 <strong>FP(과잉·잘못 구현된 것)</strong> 와 <strong>FN(누락·빠진 것)</strong> 두 관점의 서브에이전트를 병렬로 돌립니다. 성질이 반대인 두 오류를 동시에 잡습니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;한 방향 리뷰는 한쪽 오류만 잡습니다. 실제로 한 단계에서 12건의 정정을 이 방식으로 발견.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">06</div>
+      <div>
+        <div class="p-title">안전은 자동 가드로 강제한다</div>
+        <div class="p-desc">사람의 주의력에 의존하지 않고 위험 동작을 <strong>자동 차단 훅</strong>으로 막습니다 — Production CUD 차단, 배포 ID 고정, 버전 동기화. 기존 데이터·스키마는 보존하고 <strong>추가만</strong> 허용(비파괴).</div>
+        <div class="p-why"><b>WHY</b> &nbsp;상용 데이터 파괴·중복 배포 같은 비가역 사고는 사람이 아니라 가드가 막아야 합니다.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">07</div>
+      <div>
+        <div class="p-title">검증 없이 "정상"이라 말하지 않는다</div>
+        <div class="p-desc">"정상 동작" 주장 전에 <strong>end-to-end 증거</strong>를 확보합니다. 배포는 push→버전→배포→실제 화면 확인이 한 세트, 데이터 변경은 라이브 round-trip(쓰기→다시 읽기)으로 검증합니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;검증 없는 "정상"은 가장 비싼 거짓말. 토큰보다 사람 시간이 비쌉니다.</div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-num">08</div>
+      <div>
+        <div class="p-title">실수는 메모리로 자산화한다</div>
+        <div class="p-desc">반복 실수 · 확정 결정 · 검증된 패턴을 <strong>영속 메모리</strong>에 기록하고 다음 작업에서 자동 참조합니다. 개인의 경험이 팀과 다음 세션의 자산이 됩니다.</div>
+        <div class="p-why"><b>WHY</b> &nbsp;같은 실수를 두 번 하지 않는 가장 확실한 방법은 규칙을 재사용 가능한 메모리로 만드는 것.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="cases-label">Case Studies — 방법이 적용된 사례</div>
+  <div class="cases">
+    <a class="c-card" href="work/case-studies/test-automation.md">
+      <div class="c-icon">⚙️</div>
+      <div class="c-title">전 계층 테스트 자동화</div>
+      <div class="c-metric">0 → 969건 · 검증 2~3h→1분</div>
+      <div class="c-how">3계층 아키텍처 · ISO 25010 11-컬럼 표준 · 환경 중앙화로 3환경 동일 TC 실행</div>
+      <div class="c-link">read →</div>
+    </a>
+    <a class="c-card" href="work/case-studies/ai-qa-pipeline.md">
+      <div class="c-icon">🤖</div>
+      <div class="c-title">AI-Driven QA 파이프라인</div>
+      <div class="c-metric">TC 공수 58%↓ · 정확도 60→80%</div>
+      <div class="c-how">Skills/Hooks/Agents · 환각 차단 게이트(23기준+UNCLEAR) · 플러그인 v2.4.0 패키징</div>
+      <div class="c-link">read →</div>
+    </a>
+    <a class="c-card" href="work/case-studies/qa-dashboard.md">
+      <div class="c-icon">📊</div>
+      <div class="c-title">QA 운영 대시보드 + 무결성</div>
+      <div class="c-metric">공유 30분→0분 · Critical 41%↓</div>
+      <div class="c-how">마이크로 배포 · 비파괴 원칙 · 데이터 무결성 사고 대응(즉시 복구 + 감사 로그)</div>
+      <div class="c-link">read →</div>
+    </a>
+  </div>
+
+  <p style="margin-top:24px;font-size:14px;color:var(--text-secondary);line-height:1.75;font-family:'Noto Sans KR',var(--sans);">
+    전략 노트 — <a href="work/llm-testing-strategy.md" style="color:var(--accent);text-decoration:none;">생성형 AI(LLM) 테스트를 전략적으로</a>.
+    부동산 대화형 AI를 검증하면서, 케이스를 손으로 적어 확인하는 방식의 한계와 생성·평가·데이터·통합을 자동화하는 방향을 정리했습니다.
+  </p>
+
+  <footer>
+    <div class="f-name">연향주</div>
+    <div class="f-copy">© 2026 · How I Work — methodology &amp; case studies</div>
+  </footer>
+
+</div>
+</body>
+</html>

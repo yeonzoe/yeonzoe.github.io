@@ -7,32 +7,28 @@
   <title>연향주 — QA Engineer Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green: #00ff41;
-      --green-dim: rgba(0, 255, 65, 0.07);
-      --green-glow: rgba(0, 255, 65, 0.15);
-      --amber: #ffb300;
-      --amber-dim: rgba(255, 179, 0, 0.08);
-      --cyan: #56d4dd;
-      --magenta: #f472b6;
-      --red-dot: #ff5f56;
-      --yellow-dot: #ffbd2e;
-      --green-dot: #27c93f;
-      --bg: #0a0e14;
-      --bg-surface: #0d1219;
-      --surface: #111820;
-      --surface-hover: #182028;
-      --border: rgba(0, 255, 65, 0.08);
-      --border-strong: rgba(0, 255, 65, 0.18);
-      --text: #c5c8c6;
-      --text-bright: #e8eae8;
-      --muted: #5a6270;
-      --mono: 'JetBrains Mono', 'Noto Sans KR', monospace;
-      --sans: 'Noto Sans KR', sans-serif;
+      --bg: #08090C;
+      --surface: #10121A;
+      --card: #161921;
+      --card-hover: #1C1F2A;
+      --border: #242735;
+      --border-light: #2E3245;
+      --accent: #3ECFBE;
+      --accent-dim: rgba(62, 207, 190, 0.12);
+      --accent-glow: rgba(62, 207, 190, 0.06);
+      --gold: #C9A84C;
+      --gold-dim: rgba(201, 168, 76, 0.12);
+      --text: #DDE1EC;
+      --text-secondary: #8B90A8;
+      --text-muted: #555A72;
+      --serif: 'Inter', 'Noto Sans KR', sans-serif;
+      --sans: 'Inter', 'Noto Sans KR', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
     }
 
     html { scroll-behavior: smooth; }
@@ -40,9 +36,9 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: var(--mono);
-      font-size: 13px;
-      line-height: 1.75;
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -50,655 +46,1326 @@
     body::before {
       content: '';
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 30% 20%, rgba(0,255,65,0.015) 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 80%, rgba(0,255,65,0.01) 0%, transparent 40%);
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(62,207,190,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 0% 100%, rgba(62,207,190,0.03) 0%, transparent 55%);
       pointer-events: none;
       z-index: 0;
     }
 
-    ::selection { background: var(--green); color: var(--bg); }
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(8, 9, 12, 0.92);
+      border-bottom-color: var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
 
-    a { color: var(--cyan); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .terminal {
-      max-width: 960px;
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
+      max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+    }
+    #hero::after {
+      content: '';
+      position: fixed;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 50vw; height: 100vh;
+      background: radial-gradient(ellipse at right center, rgba(62,207,190,0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: -1;
     }
 
-    .terminal-chrome {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #1a1f28;
-      border-bottom: 1px solid var(--border-strong);
-      padding: 10px 16px;
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
       gap: 12px;
-      backdrop-filter: blur(16px);
     }
-
-    .window-dots { display: flex; gap: 6px; flex-shrink: 0; }
-    .window-dots span { width: 11px; height: 11px; border-radius: 50%; }
-    .dot-r { background: var(--red-dot); }
-    .dot-y { background: var(--yellow-dot); }
-    .dot-g { background: var(--green-dot); }
-
-    .terminal-title {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      flex: 1;
-      text-align: center;
-      margin-right: 50px;
-    }
-
-    .terminal-tabs { display: flex; gap: 0; margin-left: auto; margin-right: auto; }
-    .terminal-tab {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 4px 14px;
-      color: var(--muted);
-      cursor: pointer;
-      border: 1px solid transparent;
-      background: none;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .terminal-tab:hover { color: var(--green); text-decoration: none; background: var(--green-dim); }
-    .terminal-tab.active { color: var(--green); border-color: var(--border-strong); background: var(--green-dim); }
-
-    .terminal-body { padding: 32px 28px 120px; }
-
-    .prompt { color: var(--green); font-weight: 500; user-select: none; }
-    .prompt-user { color: var(--cyan); }
-    .prompt-at { color: var(--muted); }
-    .prompt-host { color: var(--magenta); }
-    .prompt-path { color: var(--amber); }
-    .prompt-dollar { color: var(--green); }
-
-    .cmd { margin-bottom: 28px; }
-    .cmd-line { display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px; }
-    .cmd-text { color: var(--text-bright); font-weight: 400; }
-    .cmd-flag { color: var(--cyan); }
-    .cmd-arg { color: var(--amber); }
-
-    .output { padding-left: 0; margin-bottom: 12px; }
-    .output-line { color: var(--text); line-height: 1.8; }
-    .output-comment { color: var(--muted); font-style: italic; }
-    .output-highlight { color: var(--green); font-weight: 500; }
-    .output-value { color: var(--amber); font-weight: 600; }
-    .output-dim { color: var(--muted); }
-
-    .divider {
-      color: var(--muted);
-      margin: 48px 0 32px;
-      opacity: 0.4;
-      font-size: 11px;
-      user-select: none;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      margin: 16px 0 8px;
-    }
-    .stat-box {
-      border: 1px solid var(--border);
-      padding: 14px 12px;
-      text-align: center;
-      background: var(--bg-surface);
-    }
-    .stat-box:hover { border-color: var(--green); background: var(--green-dim); }
-    .stat-num {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--amber);
-      display: block;
-      line-height: 1.2;
-    }
-    .stat-label {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    .pillar {
-      border-left: 2px solid var(--green);
-      padding: 12px 0 12px 20px;
-      margin: 12px 0;
-      background: linear-gradient(90deg, var(--green-dim), transparent 60%);
-    }
-    .pillar-num { color: var(--green); font-size: 11px; letter-spacing: 0.1em; }
-    .pillar-title { color: var(--text-bright); font-weight: 600; font-size: 14px; margin: 2px 0 4px; }
-    .pillar-desc { color: var(--text); font-family: var(--sans); font-size: 13px; line-height: 1.8; }
-
-    .tree { line-height: 1.9; }
-    .tree-branch { color: var(--muted); user-select: none; }
-    .tree-dir { color: var(--cyan); font-weight: 500; }
-    .tree-file { color: var(--text); }
-    .tree-badge {
+    .hero-label::before {
+      content: '';
       display: inline-block;
-      padding: 1px 7px;
-      margin: 1px 3px;
-      font-size: 11px;
-      border: 1px solid var(--border);
+      width: 32px; height: 1px;
+      background: var(--accent);
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(68px, 9vw, 116px);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
       color: var(--text);
-      background: var(--bg-surface);
-      border-radius: 2px;
+      margin-bottom: 10px;
     }
-    .tree-badge.gold { border-color: var(--amber); color: var(--amber); background: var(--amber-dim); }
-
-    .git-log-entry {
-      display: grid;
-      grid-template-columns: 86px 56px 1fr;
-      gap: 0 12px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
+    .hero-name-en {
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      margin-bottom: 36px;
+      display: block;
     }
-    .git-log-entry:last-child { border-bottom: none; }
-    .git-hash { color: var(--amber); font-size: 11px; font-weight: 500; padding-top: 2px; }
-    .git-graph { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
-    .git-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--green);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 6px var(--green-glow);
+    .hero-title {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      animation: pulse 2.2s ease infinite;
       flex-shrink: 0;
     }
-    .git-dot.past { background: var(--muted); box-shadow: none; }
-    .git-line { width: 1px; flex: 1; background: var(--border-strong); min-height: 20px; }
-    .git-company { color: var(--text-bright); font-weight: 600; font-size: 14px; }
-    .git-company small { font-weight: 400; font-size: 11px; color: var(--muted); margin-left: 6px; }
-    .git-role { color: var(--cyan); font-size: 12px; margin: 2px 0 8px; }
-    .git-bullets { list-style: none; padding: 0; }
-    .git-bullets li {
-      position: relative;
-      padding-left: 16px;
-      font-size: 12px;
-      color: var(--text);
-      line-height: 1.8;
-      margin-bottom: 2px;
-      font-family: var(--sans);
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(62,207,190,0.4); }
+      50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(62,207,190,0); }
     }
-    .git-bullets li::before {
-      content: '>';
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      line-height: 1.85;
+      margin-bottom: 48px;
+      font-family: 'Noto Sans KR', var(--sans);
+    }
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      transition: all 0.25s ease;
+      background: var(--surface);
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* Hero Stats */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 28px;
+      min-width: 230px;
+      text-align: right;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .stat-card::before {
+      content: '';
       position: absolute;
-      left: 0;
-      color: var(--green);
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .stat-card:hover { transform: translateX(-6px); border-color: var(--border-light); }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-number span { color: var(--accent); font-style: italic; }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* ── Layout Helpers ── */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 22px; height: 1px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 56px;
+      letter-spacing: -0.01em;
+    }
+    .full-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── About ── */
+    #about {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-quote {
+      font-family: var(--sans);
+      font-size: clamp(20px, 2.4vw, 30px);
+      font-weight: 300;
+      font-style: normal;
+      line-height: 1.55;
+      color: var(--text);
+      position: relative;
+      padding-left: 28px;
+      border-left: 2px solid var(--accent);
+    }
+    .about-quote em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pillar {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .pillar-num {
       font-family: var(--mono);
       font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      padding-top: 2px;
+      flex-shrink: 0;
+      width: 28px;
     }
-    .git-bullets li strong { color: var(--text-bright); font-weight: 600; }
+    .pillar-body {}
+    .pillar-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+      letter-spacing: 0.02em;
+    }
+    .pillar-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-family: 'Noto Sans KR', var(--sans);
+    }
+    @media (max-width: 960px) {
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
 
-    .ls-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-    .ls-table th {
-      text-align: left;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 6px 8px;
-      border-bottom: 1px solid var(--border-strong);
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
     }
-    .ls-table td { padding: 10px 8px; border-bottom: 1px solid var(--border); font-size: 12px; vertical-align: top; }
-    .ls-table tr:hover td { background: var(--green-dim); }
-    .ls-name { color: var(--cyan); font-weight: 500; }
-    .ls-name a { color: var(--cyan); }
-    .ls-size { color: var(--amber); font-weight: 500; }
-    .ls-perm { color: var(--muted); }
-    .ls-desc { color: var(--text); font-family: var(--sans); font-size: 12px; }
-    .ls-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-    .ls-tag {
-      font-size: 10px; padding: 1px 6px;
+    .skill-group {
+      background: var(--card);
       border: 1px solid var(--border);
-      color: var(--muted);
+      border-radius: 10px;
+      padding: 22px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .skill-group:hover {
+      border-color: var(--border-light);
+      background: var(--card-hover);
+    }
+    .skill-group-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-group-label::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: var(--border);
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 7px; }
+    .badge {
+      padding: 4px 11px;
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .badge:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .badge.gold { border-color: rgba(201,168,76,0.4); color: var(--gold); background: var(--gold-dim); }
+
+    /* ── Experience ── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .exp-list::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px; bottom: 10px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--border) 25%, var(--border) 100%);
+    }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 0 52px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -4px; top: 48px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .exp-item:hover::before {
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(62,207,190,0.4);
+    }
+    .exp-meta { padding-left: 28px; }
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .exp-company {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .exp-company small {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-style: normal;
+      color: var(--text-secondary);
+    }
+    .exp-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+    .exp-duration {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      padding: 3px 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: inline-block;
+      letter-spacing: 0.06em;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; padding-top: 4px; }
+    .exp-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-family: 'Noto Sans KR', var(--sans);
+    }
+    .exp-bullets li::before {
+      content: '→';
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .exp-bullets li strong { color: var(--text); font-weight: 500; }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(62,207,190,0.06) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.35s;
+      pointer-events: none;
+    }
+    .project-card:hover {
+      border-color: rgba(62,207,190,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 0 0 1px rgba(62,207,190,0.08);
+    }
+    .project-card:hover::after { opacity: 1; }
+    .project-icon {
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(62,207,190,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      position: relative; z-index: 1;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      flex: 1;
+      position: relative; z-index: 1;
+      font-family: 'Noto Sans KR', var(--sans);
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      position: relative; z-index: 1;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      padding: 5px 12px;
+      border: 1px solid rgba(62,207,190,0.3);
+      border-radius: 3px;
+      background: var(--accent-dim);
+      transition: all 0.2s;
+      position: relative; z-index: 1;
+    }
+    .project-link:hover { background: rgba(62,207,190,0.2); border-color: var(--accent); }
+    .project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .project-tag {
+      padding: 3px 9px;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 2px;
       font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
     }
 
-    .cred-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 6px 0;
-      border-bottom: 1px dotted var(--border);
+    /* ── Toolkit ── */
+    .toolkit-intro {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 720px;
+      margin: -32px 0 40px;
+      font-family: 'Noto Sans KR', var(--sans);
     }
-    .cred-name { color: var(--text-bright); font-size: 12px; }
-    .cred-year { color: var(--muted); font-size: 11px; }
-
-    .contact-line { display: flex; gap: 8px; margin: 3px 0; }
-    .contact-key { color: var(--muted); min-width: 70px; }
-    .contact-val a { color: var(--cyan); }
-
-    .fade-cmd {
+    .toolkit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .tk-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .tk-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(62,207,190,0.06) 0%, transparent 55%);
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.5s, transform 0.5s;
+      transition: opacity 0.35s;
+      pointer-events: none;
     }
-    .fade-cmd.visible { opacity: 1; transform: translateY(0); }
-
-    .footer-exit {
-      margin-top: 64px;
-      padding: 24px 0;
+    .tk-card:hover {
+      border-color: rgba(62,207,190,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.4), 0 0 0 1px rgba(62,207,190,0.08);
+    }
+    .tk-card:hover::after { opacity: 1; }
+    .tk-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      position: relative; z-index: 1;
+    }
+    .tk-icon {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(62,207,190,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 18px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .tk-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .tk-count {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(62,207,190,0.25);
+      border-radius: 3px;
+      padding: 2px 8px;
+      letter-spacing: 0.04em;
+    }
+    .tk-rows { display: flex; flex-direction: column; gap: 11px; position: relative; z-index: 1; }
+    .tk-row { display: grid; grid-template-columns: 78px 1fr; gap: 12px; align-items: baseline; }
+    .tk-cat {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 1px;
+    }
+    .tk-items {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-family: 'Noto Sans KR', var(--sans);
+    }
+    .tk-items code {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0 5px;
+    }
+    .tk-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      letter-spacing: 0.03em;
+      margin-top: 16px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
-      text-align: center;
+      position: relative; z-index: 1;
     }
-    .footer-exit .prompt { font-size: 12px; }
-    .footer-pid { color: var(--muted); font-size: 10px; margin-top: 8px; }
-
-    @media print {
-      body::after, body::before { display: none; }
-      .terminal-chrome { display: none; }
-      body { background: #fff; color: #1a1a1a; font-size: 10pt; }
-      .output-highlight, .prompt { color: #1a1a1a; }
-      .stat-num { color: #1a1a1a; }
+    @media (max-width: 960px) {
+      .toolkit-grid { grid-template-columns: 1fr; }
+      .toolkit-intro { margin-top: 0; }
     }
 
-    @media (max-width: 768px) {
-      .terminal-body { padding: 20px 16px 80px; }
-      .terminal-tabs { display: none; }
-      .terminal-title { margin-right: 0; text-align: left; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .git-log-entry { grid-template-columns: 1fr; gap: 4px; }
-      .git-hash { font-size: 10px; }
-      .git-graph { display: none; }
-      .ls-table { font-size: 11px; }
-      .ls-table .hide-mobile { display: none; }
+    /* ── Certifications ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 14px;
+    }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.25s ease;
+    }
+    .cert-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: var(--card-hover);
+    }
+    .cert-icon {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .cert-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+      font-family: 'Noto Sans KR', var(--sans);
+    }
+    .cert-year {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-name { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--text-secondary); }
+    .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .fade-up:nth-child(5) { transition-delay: 0.32s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+      .hero-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .section-wrap { padding: 64px 24px; }
+      #about { padding: 56px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .exp-item { grid-template-columns: 1fr; gap: 16px; padding-left: 28px; }
+      .exp-meta { padding-left: 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<div class="terminal">
+<!-- Nav -->
+<nav id="navbar">
+  <div class="nav-logo">연향주<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#toolkit">Toolkit</a></li>
+    <li><a href="how-i-work.html">How I Work</a></li>
+    <li><a href="#certs">Credentials</a></li>
+  </ul>
+</nav>
 
-  <div class="terminal-chrome">
-    <div class="window-dots">
-      <span class="dot-r"></span>
-      <span class="dot-y"></span>
-      <span class="dot-g"></span>
+<!-- Hero -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-label">Senior QA Engineer</div>
+    <h1 class="hero-name">연향주</h1>
+    <span class="hero-name-en">Hyangju Yeon</span>
+    <p class="hero-title">
+      <span class="hero-dot"></span>
+      SENIOR QA ENGINEER &nbsp;·&nbsp; TEST AUTOMATION &nbsp;·&nbsp; AI NATIVE QA
+    </p>
+    <p class="hero-desc">
+      테스트 설계 · 자동화 구현 · CI 품질 게이트 · AI Native QA 파이프라인까지<br>
+      0에서 직접 설계하고 구현해온 QA 엔지니어.
+    </p>
+    <div class="hero-contacts">
+      <a class="contact-link" href="mailto:hjyeon0917@gmail.com">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        hjyeon0917@gmail.com
+      </a>
+      <a class="contact-link" href="how-i-work.html">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        How I Work
+      </a>
+      <a class="contact-link" href="resume.html" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Resume:Engineer
+      </a>
+      <a class="contact-link" href="resume-manager.html" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Resume:Manager
+      </a>
+      <a class="contact-link" href="https://github.com/yeonzoe" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/yeonzoe
+      </a>
     </div>
-    <div class="terminal-tabs">
-      <a class="terminal-tab active" href="#whoami">whoami</a>
-      <a class="terminal-tab" href="#skills">skills</a>
-      <a class="terminal-tab" href="#experience">log</a>
-      <a class="terminal-tab" href="#projects">ls</a>
-      <a class="terminal-tab" href="resume.html">resume:engineer</a>
-      <a class="terminal-tab" href="resume-manager.html">resume:manager</a>
-    </div>
-    <div class="terminal-title">yeonzoe@qa-engineer: ~/portfolio</div>
   </div>
 
-  <div class="terminal-body">
-
-    <!-- whoami -->
-    <div class="cmd" id="whoami">
-      <div class="cmd-line">
-        <span class="prompt"><span class="prompt-user">yeonzoe</span><span class="prompt-at">@</span><span class="prompt-host">qa-engineer</span>:<span class="prompt-path">~</span><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">whoami</span>
-      </div>
-      <div class="output">
-        <div style="margin:12px 0 6px;">
-          <span style="font-size:28px;font-weight:700;color:var(--text-bright);">연향주</span>
-          <span style="font-size:13px;color:var(--muted);margin-left:10px;letter-spacing:0.08em;">HYANGJU YEON</span>
-        </div>
-        <div style="color:var(--green);font-size:12px;letter-spacing:0.08em;margin-bottom:16px;">SENIOR QA ENGINEER</div>
-        <div style="font-family:var(--sans);font-size:14px;color:var(--text);line-height:1.8;">
-          테스트 설계 · 자동화 구현 · CI 품질 게이트 구축을 직접 수행해온 QA 엔지니어.<br>
-          Playwright · pytest · Maestro로 969건 자동화 구현, 배포 검증 2시간→1분 단축.<br>
-          HTTP Toolkit · Flipper · Postman으로 네트워크 계층 디버깅, Claude Code 기반 AI QA 파이프라인으로 vibe coding 환경 품질 보장.
-        </div>
-      </div>
-
-      <div class="stats-grid" style="margin-top:20px;">
-        <div class="stat-box">
-          <span class="stat-num">969</span>
-          <div class="stat-label">자동화 TC</div>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">3<small style="font-size:12px;color:var(--muted);">계층</small></span>
-          <div class="stat-label">웹 · API · 모바일</div>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">2h<small style="font-size:12px;color:var(--muted);">→1m</small></span>
-          <div class="stat-label">배포 검증 단축</div>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">58%<small style="font-size:10px;color:var(--muted);">↓</small></span>
-          <div class="stat-label">수동 공수 절감</div>
-        </div>
-      </div>
-
-      <div style="margin-top:12px;">
-        <div class="contact-line"><span class="contact-key">이메일</span><span class="contact-val"><a href="mailto:hjyeon@naver.com">hjyeon@naver.com</a></span></div>
-        <div class="contact-line"><span class="contact-key">GitHub</span><span class="contact-val"><a href="https://github.com/yeonzoe" target="_blank">github.com/yeonzoe</a></span></div>
-        <div class="contact-line"><span class="contact-key">이력서</span><span class="contact-val"><a href="resume.html" target="_blank">resume:engineer</a> · <a href="resume-manager.html" target="_blank">resume:manager</a></span></div>
-      </div>
+  <div class="hero-right">
+    <div class="stat-card fade-up">
+      <div class="stat-number">0→969</div>
+      <div class="stat-label">Automated TCs · from scratch</div>
     </div>
+    <div class="stat-card fade-up">
+      <div class="stat-number">3<span> Layers</span></div>
+      <div class="stat-label">Web · API · Mobile</div>
+    </div>
+    <div class="stat-card fade-up">
+      <div class="stat-number">2h<span>→1m</span></div>
+      <div class="stat-label">Deploy Verification</div>
+    </div>
+    <div class="stat-card fade-up">
+      <div class="stat-number">58%<span>↓</span></div>
+      <div class="stat-label">Manual Effort Reduced</div>
+    </div>
+  </div>
+</div>
 
-    <div class="divider">───────────────────────────────────────────────────────────────────────</div>
+<div class="full-divider"></div>
 
-    <!-- cat about.txt -->
-    <div class="cmd fade-cmd">
-      <div class="cmd-line">
-        <span class="prompt"><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">cat <span class="cmd-arg">about.txt</span></span>
-      </div>
-      <div class="output">
+<!-- About -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">About</div>
+    <div class="about-inner">
+      <p class="about-quote">
+        품질은 마지막 단계가 아니라<br>
+        <em>개발 전 과정에 내재된 설계</em>여야 한다.
+      </p>
+      <div class="about-pillars">
         <div class="pillar">
           <div class="pillar-num">01</div>
-          <div class="pillar-title">결함은 코드보다 앞에서 막는다</div>
-          <div class="pillar-desc">결함의 대부분은 PRD·설계 단계에서 유입됩니다. 개발 요구사항과 기술 설계를 주도적으로 리뷰하고, 근본 원인 분석으로 재발을 차단합니다.</div>
+          <div class="pillar-body">
+            <div class="pillar-title">결함은 코드보다 앞에서 막는다</div>
+            <div class="pillar-desc">결함의 대부분은 PRD·설계 단계에서 유입됩니다. 개발 요구사항과 기술 설계를 주도적으로 리뷰(Shift-Left)하고, 근본 원인 분석(RCA)으로 재발을 차단합니다.</div>
+          </div>
         </div>
         <div class="pillar">
           <div class="pillar-num">02</div>
-          <div class="pillar-title">반복은 자동화로 없앤다</div>
-          <div class="pillar-desc">자동화 0건에서 969건을 구축하고, 배포 검증 시간을 2~3시간에서 1분으로 단축했습니다. 수동 반복을 제거해 QA가 탐색적 테스트에 집중할 수 있게 합니다.</div>
+          <div class="pillar-body">
+            <div class="pillar-title">반복은 자동화로 없앤다</div>
+            <div class="pillar-desc">자동화 0건에서 969건을 직접 구축하고, 배포 검증 시간을 2~3시간에서 1분으로 단축했습니다. 수동 반복을 제거해 QA가 탐색적 테스트에 집중하게 합니다.</div>
+          </div>
         </div>
         <div class="pillar">
           <div class="pillar-num">03</div>
-          <div class="pillar-title">AI 보조 개발(vibe coding) 환경에서도 품질은 지킨다</div>
-          <div class="pillar-desc">Claude Code · Cursor · MCP 기반 QA 자동화 도구를 직접 구현하고 플러그인으로 패키징해 팀에 배포·운영. TC 자동 생성 · 회귀 영향 범위 자동 산출 · 커버리지 모니터링 파이프라인을 구축해, AI가 생성하는 코드 양이 폭증하는 환경에서도 품질 저하를 방지합니다.</div>
+          <div class="pillar-body">
+            <div class="pillar-title">AI 보조 개발(vibe coding) 환경에서도 품질을 지킨다</div>
+            <div class="pillar-desc">Claude Code · Cursor · MCP 기반 QA 자동화 도구를 직접 구현하고 플러그인으로 패키징해 팀에 배포·운영. TC 자동 생성 · 회귀 영향 범위 자동 산출 · 커버리지 모니터링으로 AI 생성 코드가 폭증해도 품질 저하를 방지합니다.</div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="divider">───────────────────────────────────────────────────────────────────────</div>
+<div class="full-divider"></div>
 
-    <!-- tree skills/ -->
-    <div class="cmd fade-cmd" id="skills">
-      <div class="cmd-line">
-        <span class="prompt"><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">tree <span class="cmd-arg">skills/</span></span>
-      </div>
-      <div class="output tree" style="margin-top:8px;">
-        <div><span class="tree-branch">skills/</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">테스트 설계/</span></div>
-        <div><span class="tree-branch">│   ├── </span><span class="tree-badge gold">ISTQB CTFL</span> <span class="tree-badge">블랙박스 5기법</span> <span class="tree-badge">BDD / GWT</span> <span class="tree-badge">Test Pyramid</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge">Risk-Based Testing</span> <span class="tree-badge">탐색적 테스트</span> <span class="tree-badge">근본 원인 분석</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">자동화/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge">Playwright TS</span> <span class="tree-badge">pytest</span> <span class="tree-badge">Maestro</span> <span class="tree-badge">Appium</span> <span class="tree-badge">Selenium</span> <span class="tree-badge">REST Assured</span> <span class="tree-badge gold">Behave (BDD)</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">API 테스트/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">Postman</span> <span class="tree-badge">Newman</span> <span class="tree-badge">pytest + requests</span> <span class="tree-badge">OpenAPI / Swagger 검증</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">디버깅 · 네트워크/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">HTTP Toolkit</span> <span class="tree-badge gold">Flipper</span> <span class="tree-badge">Charles Proxy</span> <span class="tree-badge">Wireshark</span> <span class="tree-badge">Visual Regression</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">AI · Claude Code/</span></div>
-        <div><span class="tree-branch">│   ├── </span><span class="tree-badge gold">Claude Code</span> <span class="tree-badge gold">플러그인 패키징·배포 v2.4.0</span> <span class="tree-badge">커스텀 Skills 27개</span> <span class="tree-badge">Slash Commands 30+</span> <span class="tree-badge">Hooks 12종</span> <span class="tree-badge">MCP 연동</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge gold">vibe coding 품질 보장</span> <span class="tree-badge gold">Cursor 이중 환경</span> <span class="tree-badge">Spec-Driven Dev(OpenSpec)</span> <span class="tree-badge">GitHub Copilot</span></div>
-        <div><span class="tree-branch">├── </span><span class="tree-dir">CI · 인프라/</span></div>
-        <div><span class="tree-branch">│   └── </span><span class="tree-badge">GitHub Actions</span> <span class="tree-badge">Allure</span> <span class="tree-badge">Slack Webhook</span> <span class="tree-badge">Jenkins (기초)</span> <span class="tree-badge">Docker (기초)</span></div>
-        <div><span class="tree-branch">└── </span><span class="tree-dir">언어/</span></div>
-        <div><span class="tree-branch">    └── </span><span class="tree-badge">Python</span> <span class="tree-badge">TypeScript</span> <span class="tree-badge">JavaScript</span> <span class="tree-badge">SQL</span></div>
-        <div style="margin-top:6px;"><span class="output-dim">8 directories, 40+ skills</span></div>
+<!-- Skills -->
+<div class="section-wrap" id="skills">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">기술 스택</h2>
+  <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;max-width:760px;margin:-36px 0 36px;font-family:'Noto Sans KR',var(--sans);">
+    규제 도메인(의료 AI FDA·핀테크 블록체인)과 고속 성장 플랫폼(커머스·프롭테크)을 오가며,
+    <strong style="color:var(--text);">어떤 환경에서도 빠르게 품질 프로세스를 셋업하는 적응력</strong>을 갖췄습니다.
+    일본향 CMS 품질 관리 경험과 일본어(JLPT 2급·OPIc AL)로 <strong style="color:var(--text);">글로벌(일본 시장) 확장 QA·커뮤니케이션</strong>도 직접 대응합니다.
+  </p>
+  <div class="skills-grid">
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">Test Design</div>
+      <div class="badges">
+        <span class="badge gold">ISTQB CTFL</span>
+        <span class="badge">블랙박스 5기법</span>
+        <span class="badge">BDD / GWT</span>
+        <span class="badge">Test Pyramid</span>
+        <span class="badge">Risk-Based Testing</span>
+        <span class="badge">탐색적 테스트</span>
+        <span class="badge">근본 원인 분석</span>
       </div>
     </div>
-
-    <div class="divider">───────────────────────────────────────────────────────────────────────</div>
-
-    <!-- git log experience/ -->
-    <div class="cmd fade-cmd" id="experience">
-      <div class="cmd-line">
-        <span class="prompt"><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">git log <span class="cmd-flag">--oneline</span> <span class="cmd-arg">experience/</span></span>
-      </div>
-      <div class="output">
-
-        <!-- 직방 -->
-        <div class="git-log-entry">
-          <div class="git-hash">2024.07—now</div>
-          <div class="git-graph"><div class="git-dot"></div><div class="git-line"></div></div>
-          <div>
-            <div class="git-company">직방<small>ZIGBANG · QA Engineer</small></div>
-            <div class="git-role">PropTech · 3개 서비스 · 자동화 파이프라인 + AI TC 생성 구축</div>
-            <ul class="git-bullets">
-              <li><strong>3계층 TC 아키텍처 설계 · 자동화 969건 직접 구현</strong> — Playwright(TypeScript) 웹 E2E 272건 · pytest API 446건 · Maestro 모바일 251건. ISO 25010 기반 11-컬럼 TC 표준 수립, 블랙박스 5기법 전수 적용</li>
-              <li><strong>Behave BDD 하네스 엔지니어링</strong> — 한글 Gherkin 437 시나리오, Orchestrator로 멀티 환경(prod/preview/beta)×스택(web/api/app) 병렬 실행, TC↔Feature 자동 변환 엔진 구축</li>
-              <li><strong>배포 검증 2~3시간 → 1분</strong> — Preview→Beta→Production 3단계 품질 게이트 + 환경별 자동 분기(API_ENV) + skipOnProd 패턴</li>
-              <li><strong>네트워크 계층 디버깅 표준화</strong> — HTTP Toolkit(HTTPS 프록시·요청/응답 재현) · Flipper(iOS/Android 네트워크·로그·스토리지) · Postman으로 결함 재현성 확보, 리포트 정확도 향상</li>
-              <li><strong>테스트 디버깅 인프라 구축</strong> — 실패 시 자동 스크린샷 캡처, API 응답시간 모니터링(3초 임계치), Visual Regression 픽셀 비교, 토큰 자동 갱신, 환경별 CUD 안전 가드</li>
-              <li><strong>AI TC 자동생성 파이프라인 구축</strong> — 3관점 검증 + 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류로 TC 생성 공수 58% 절감 (6일→2.5일)</li>
-              <li><strong>Claude Code · Cursor 자동화 생태계 직접 구현</strong> — 커스텀 Skills 27개 · Slash Commands 30여 개 · Hooks 12종 · MCP 연동으로 PRD 정제·구조 스캔(시프트 레프트) → TC 생성 → Web/API/App 통합 sanity orchestrator → 회귀 영향 범위 자동 산출 엔드-투-엔드 파이프라인</li>
-              <li><strong>QA 자동화 도구 플러그인 패키징·팀 배포</strong> — 스킬·커맨드·훅을 사내 마켓플레이스 플러그인(v2.4.0)으로 패키징, 팀원이 설치·사용하는 제품으로 버전 관리. product-hub MCP 연동으로 실제 BE 코드베이스 기반 TC 자동 생성까지 확장</li>
-              <li><strong>vibe coding 환경 품질 보장</strong> — AI 보조 개발 상황에서 자동 회귀 범위 판정 · 커버리지 모니터링으로 AI 생성 코드 배포 안전성 유지</li>
-              <li><strong>QA 대시보드 + CI 안정화</strong> — Allure + GitHub Pages 자동 배포, OAuth 토큰 자동 발급으로 CI 실패 0건 유지</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 머스트잇 -->
-        <div class="git-log-entry">
-          <div class="git-hash">2023.10—<br>2024.06</div>
-          <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
-          <div>
-            <div class="git-company">머스트잇<small>명품 커머스 · QA Engineer</small></div>
-            <div class="git-role">Commerce · 4단계 테스트 환경 설계 + 검증 프로세스 구축</div>
-            <ul class="git-bullets">
-              <li><strong>4단계 테스트 환경 설계·구축</strong> — Dev/QA/STG/Prod 환경 분리 아키텍처 수립, 환경 간 데이터 격리로 긴급 배포 반복 사이클 제거</li>
-              <li><strong>4단계 검증 프로세스 정립</strong> — 기획→인수→회귀→스테이징 흐름 표준화, 배포 판단 기준 7개 항목 문서화</li>
-              <li><strong>Jira 워크플로우 자동화</strong> — 전용 프로젝트 신설, Product→QA→Dev 이슈 자동 복제</li>
-              <li><strong>서비스 전반 개편 QA 주도</strong> — 메인홈·카테고리·상품·필터 등 개편, 정기 배포 안정화</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 그라운드엑스 -->
-        <div class="git-log-entry">
-          <div class="git-hash">2022.03—<br>2023.10</div>
-          <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
-          <div>
-            <div class="git-company">그라운드엑스<small>Klaytn · QA Engineer</small></div>
-            <div class="git-role">블록체인 · 클립 지갑 · NFT</div>
-            <ul class="git-bullets">
-              <li><strong>클립 지갑 5계층 통합 테스트 설계</strong> — 앱·웹·서버·BOF·bapp SDK 각 계층별 TC 설계 및 실행</li>
-              <li><strong>카카오톡 지갑-NFT 연동 전수 검증</strong> — 상태전이 기법으로 인증 실패·만료·재시도 20+ 시나리오 검증</li>
-              <li><strong>NFT 테스트 데이터 생성 스크립트 개발</strong> — 수동 20분→자동 2분, 대량 민팅으로 성능 부하 데이터셋 확보</li>
-              <li><strong>BDD 기반 3단계 문서 체계</strong> — Feature → Scenario → Step 수립, Postman으로 블록체인 API 검증</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 야놀자 -->
-        <div class="git-log-entry">
-          <div class="git-hash">2020.10—<br>2022.03</div>
-          <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
-          <div>
-            <div class="git-company">야놀자Tech<small>R&D · QA Engineer</small></div>
-            <div class="git-role">Travel · 데일리호텔</div>
-            <ul class="git-bullets">
-              <li><strong>TC 부재 상태에서 전체 재정비</strong> — 포인트·리뷰·결제수단 영역 TC 0에서 신규 작성 및 체계화</li>
-              <li><strong>회원가입 완료율 20%↑</strong> — 동등분할·경계값 분석으로 이탈 지점 식별, 결과를 마케팅·데이터 조직과 공유</li>
-              <li><strong>초기 결함 검출률 40%↑</strong> — 동치분할·경계값·상태전이 기법을 팀 표준으로 정착</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 이우소프트 -->
-        <div class="git-log-entry">
-          <div class="git-hash">2016.12—<br>2020.03</div>
-          <div class="git-graph"><div class="git-dot past"></div><div class="git-line"></div></div>
-          <div>
-            <div class="git-company">이우소프트<small>AI MedTech · QA Engineer</small></div>
-            <div class="git-role">의료 AI · X-ray · FDA/식약처 인증</div>
-            <ul class="git-bullets">
-              <li><strong>AI 의료 진단 소프트웨어 QA</strong> — FDA·식약처 인증 TC 설계, 2019 대한민국 SW 기술대상 수상 프로젝트</li>
-              <li><strong>X-ray Detector 연동 검증</strong> — HW-SW 인터페이스 TC 설계, 무선 Detector 장비 양산 출시 지원</li>
-              <li><strong>3단계 품질 프로세스 수립</strong> — Alpha→Beta→FCS 단계별 TC 기준 정의, Selenium/Python 자동화 도입</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 아이온커뮤니케이션즈 -->
-        <div class="git-log-entry">
-          <div class="git-hash">2012.07—<br>2016.11</div>
-          <div class="git-graph"><div class="git-dot past"></div></div>
-          <div>
-            <div class="git-company">아이온커뮤니케이션즈<small>CMS · QA Engineer</small></div>
-            <div class="git-role">CMS 솔루션 · 비대면 계약 · 일본 시장</div>
-            <ul class="git-bullets">
-              <li><strong>일본향 CMS 품질 관리</strong> — ISO 9126 기반 테스트 계획, 일본 시장 매출 1위 기간(2015~2016) 품질 담당</li>
-              <li><strong>비대면 계약 서식 e.Form io 검증</strong> — 온프레미스→AWS 전환, Agile 전환 시 QA 프로세스 재설계</li>
-              <li><strong>일본 고객 VOC 직접 대응 (70%)</strong> — 일본어 원문 번역·분석, PM·QA·기술 문서 작성 겸임</li>
-            </ul>
-          </div>
-        </div>
-
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">Automation</div>
+      <div class="badges">
+        <span class="badge">Playwright (TS)</span>
+        <span class="badge">pytest</span>
+        <span class="badge">Maestro</span>
+        <span class="badge">Appium</span>
+        <span class="badge">Selenium</span>
+        <span class="badge">REST Assured</span>
+        <span class="badge gold">Behave (BDD)</span>
       </div>
     </div>
-
-    <div class="divider">───────────────────────────────────────────────────────────────────────</div>
-
-    <!-- ls -la projects/ -->
-    <div class="cmd fade-cmd" id="projects">
-      <div class="cmd-line">
-        <span class="prompt"><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">ls <span class="cmd-flag">-la</span> <span class="cmd-arg">projects/</span></span>
-      </div>
-      <div class="output">
-        <table class="ls-table">
-          <thead>
-            <tr>
-              <th>permissions</th>
-              <th>size</th>
-              <th class="hide-mobile">modified</th>
-              <th>name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="ls-perm">drwxr-xr-x</td>
-              <td class="ls-size">969 TC</td>
-              <td class="hide-mobile" style="color:var(--muted)">2024-07</td>
-              <td>
-                <div class="ls-name"><a href="work.html" target="_blank">전 계층 자동화 구축/</a></div>
-                <div class="ls-desc">TC 전무 → 3계층 × 3서비스 자동화, 배포 검증 2~3시간→1분, 주당 22시간 절감</div>
-                <div class="ls-tags">
-                  <span class="ls-tag">pytest</span>
-                  <span class="ls-tag">Playwright</span>
-                  <span class="ls-tag">Maestro</span>
-                  <span class="ls-tag">Appium</span>
-                  <span class="ls-tag">GitHub Actions</span>
-                  <span class="ls-tag">Allure</span>
-                </div>
-                <div style="margin-top:6px;display:flex;gap:8px;">
-                  <a href="work.html" target="_blank" style="font-size:11px;color:var(--cyan);">[details]</a>
-                  <a href="https://github.com/yeonzoe/qa-portfolio" target="_blank" style="font-size:11px;color:var(--cyan);">[github]</a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="ls-perm">drwxr-xr-x</td>
-              <td class="ls-size">250+ TC</td>
-              <td class="hide-mobile" style="color:var(--muted)">2025-01</td>
-              <td>
-                <div class="ls-name"><a href="work.html" target="_blank">AI TC 자동생성 파이프라인/</a></div>
-                <div class="ls-desc">TC 생성 6일→2.5일 (58%↓), 정확도 60%→80%, 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류</div>
-                <div class="ls-tags">
-                  <span class="ls-tag">Claude Code</span>
-                  <span class="ls-tag">BDD</span>
-                  <span class="ls-tag">Jira API</span>
-                  <span class="ls-tag">TC-for-TC</span>
-                </div>
-                <div style="margin-top:6px;">
-                  <a href="work.html" target="_blank" style="font-size:11px;color:var(--cyan);">[details]</a>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="ls-perm">drwxr-xr-x</td>
-              <td class="ls-size">—</td>
-              <td class="hide-mobile" style="color:var(--muted)">2024-10</td>
-              <td>
-                <div class="ls-name"><a href="work.html" target="_blank">QA 대시보드/</a></div>
-                <div class="ls-desc">스프린트 TC 실시간 현황 관리, 결과 공유 30분→0분 자동화, Slack 알림 5분 내 대응 체계</div>
-                <div class="ls-tags">
-                  <span class="ls-tag">GitHub Pages</span>
-                  <span class="ls-tag">GitHub Actions</span>
-                  <span class="ls-tag">Allure</span>
-                  <span class="ls-tag">Slack</span>
-                </div>
-                <div style="margin-top:6px;">
-                  <a href="work.html" target="_blank" style="font-size:11px;color:var(--cyan);">[details]</a>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">API Testing</div>
+      <div class="badges">
+        <span class="badge gold">Postman</span>
+        <span class="badge">Newman</span>
+        <span class="badge">pytest + requests</span>
+        <span class="badge">OpenAPI / Swagger</span>
       </div>
     </div>
-
-    <div class="divider">───────────────────────────────────────────────────────────────────────</div>
-
-    <!-- cat credentials.txt -->
-    <div class="cmd fade-cmd">
-      <div class="cmd-line">
-        <span class="prompt"><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">cat <span class="cmd-arg">credentials.txt</span></span>
-      </div>
-      <div class="output">
-        <div class="cred-item">
-          <span class="cred-name"><span style="color:var(--amber);">ISTQB CTFL</span> — 국제 소프트웨어 테스팅 자격</span>
-          <span class="cred-year">2018</span>
-        </div>
-        <div class="cred-item">
-          <span class="cred-name">JLPT 2급 · OPIc 일본어 AL — 업무 수준 일본어 구사</span>
-          <span class="cred-year">—</span>
-        </div>
-        <div class="cred-item">
-          <span class="cred-name">PMBOK 6.0 · BABOK 3.0 · Agile/Scrum — KOSTA 수료</span>
-          <span class="cred-year">2018</span>
-        </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">Debugging · Network</div>
+      <div class="badges">
+        <span class="badge gold">HTTP Toolkit</span>
+        <span class="badge gold">Flipper</span>
+        <span class="badge">Charles Proxy</span>
+        <span class="badge">Wireshark</span>
+        <span class="badge">Visual Regression</span>
       </div>
     </div>
-
-    <div class="footer-exit">
-      <div>
-        <span class="prompt"><span class="prompt-dollar">$</span></span>
-        <span class="cmd-text">exit</span>
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">AI · Claude Code</div>
+      <div class="badges">
+        <span class="badge gold">Claude Code</span>
+        <span class="badge gold">플러그인 패키징·배포 v2.4.0</span>
+        <span class="badge">커스텀 Skills 27개</span>
+        <span class="badge">Slash Commands 30+</span>
+        <span class="badge">Hooks 12종</span>
+        <span class="badge">MCP 연동</span>
+        <span class="badge gold">Cursor 이중 환경</span>
+        <span class="badge">Spec-Driven Dev (OpenSpec)</span>
+        <span class="badge">GitHub Copilot</span>
       </div>
-      <div class="footer-pid">logout · session closed · last login: today from portfolio</div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">CI / Infra</div>
+      <div class="badges">
+        <span class="badge">GitHub Actions</span>
+        <span class="badge">Allure</span>
+        <span class="badge">Slack Webhook</span>
+        <span class="badge">Jenkins (기초)</span>
+        <span class="badge">Docker (기초)</span>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">Language</div>
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">TypeScript</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">SQL</span>
+        <span class="badge">일본어 JLPT 2급</span>
+      </div>
+    </div>
+    <div class="skill-group fade-up">
+      <div class="skill-group-label">Domain</div>
+      <div class="badges">
+        <span class="badge">PropTech (부동산)</span>
+        <span class="badge">커머스 (명품·여행·숙박)</span>
+        <span class="badge">핀테크 (블록체인·NFT)</span>
+        <span class="badge">의료 AI (FDA·식약처)</span>
+        <span class="badge">CMS (B2B 일본)</span>
+        <span class="badge gold">일본향 CMS 품질 관리</span>
+        <span class="badge gold">글로벌(일본어) 커뮤니케이션</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- Experience -->
+<div class="section-wrap" id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">경력</h2>
+  <div class="exp-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2024.07 — 현재</div>
+        <div class="exp-company">직방<br><small>ZIGBANG Co., Ltd</small></div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-duration">PropTech · 3개 서비스</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>통합 검증 정착으로 Critical 결함 41%↓</strong> — 스프린트 통합 검증 프로세스 확립 후 Critical(High+Urgent) 버그 17건 → 10건으로 감소, 배포 전 미해결 0건 유지 (4개 스프린트 처리율 100%)</li>
+        <li><strong>3계층 TC 아키텍처 설계 · 자동화 969건 직접 구현</strong> — Playwright(TypeScript) 웹 E2E 272건 · pytest API 446건 · Maestro 모바일 251건. ISO 25010 기반 11-컬럼 TC 표준 수립, 블랙박스 5기법 전수 적용</li>
+        <li><strong>Behave BDD 하네스 엔지니어링</strong> — 한글 Gherkin 437 시나리오, Orchestrator로 멀티 환경(prod/preview/beta)×스택(web/api/app) 병렬 실행, TC↔Feature 자동 변환 엔진 구축</li>
+        <li><strong>배포 검증 2~3시간 → 1분</strong> — Preview→Beta→Production 3단계 품질 게이트 + 환경별 자동 분기(API_ENV) + skipOnProd 패턴</li>
+        <li><strong>네트워크 계층 디버깅 표준화</strong> — HTTP Toolkit(HTTPS 프록시·요청/응답 재현) · Flipper(iOS/Android 네트워크·로그·스토리지) · Postman으로 결함 재현성 확보</li>
+        <li><strong>AI TC 자동생성 파이프라인 구축</strong> — 3관점 검증 + 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류로 TC 생성 공수 58% 절감 (6일→2.5일), 정확도 60%→80%</li>
+        <li><strong>Claude Code · Cursor 자동화 생태계 직접 구현</strong> — 커스텀 Skills 27개 · Slash Commands 30여 개 · Hooks 12종 · MCP 연동으로 PRD 정제·구조 스캔 → TC 생성 → Web/API/App 통합 sanity → 회귀 영향 범위 자동 산출 엔드-투-엔드</li>
+        <li><strong>QA 자동화 도구 플러그인 패키징·팀 배포</strong> — 스킬·커맨드·훅을 사내 마켓플레이스 플러그인(v2.4.0)으로 패키징, product-hub MCP 연동으로 실제 BE 코드베이스 기반 TC 자동 생성까지 확장</li>
+        <li><strong>vibe coding 환경 품질 보장 + QA 대시보드</strong> — 자동 회귀 범위 판정·커버리지 모니터링으로 AI 생성 코드 배포 안전성 유지, Allure + GitHub Pages 자동 배포, OAuth 토큰 자동 발급으로 CI 실패 0건 유지</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2023.10 — 2024.06</div>
+        <div class="exp-company">머스트잇<br><small>명품 커머스</small></div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-duration">9개월</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>4단계 테스트 환경 설계·구축</strong> — Dev/QA/STG/Prod 환경 분리 아키텍처 수립, 환경 간 데이터 격리로 긴급 배포 반복 사이클 제거</li>
+        <li><strong>4단계 검증 프로세스 정립</strong> — 기획→인수→회귀→스테이징 흐름 표준화, 배포 판단 기준 7개 항목 문서화</li>
+        <li><strong>Jira 워크플로우 자동화</strong> — 전용 프로젝트 신설, Product→QA→Dev 이슈 자동 복제</li>
+        <li><strong>서비스 전반 개편 QA 주도</strong> — 메인홈·카테고리·상품·필터 등 개편, 정기 배포 안정화</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2022.03 — 2023.10</div>
+        <div class="exp-company">그라운드엑스<br><small>Ground X · Klaytn</small></div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-duration">1년 8개월</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>클립 지갑 5계층 통합 테스트 설계</strong> — 앱·웹·서버·BOF·bapp SDK 각 계층별 TC 설계 및 실행</li>
+        <li><strong>카카오톡 지갑-NFT 연동 전수 검증</strong> — 상태전이 기법으로 인증 실패·만료·재시도 20+ 시나리오 검증</li>
+        <li><strong>NFT 테스트 데이터 생성 스크립트 개발</strong> — 수동 20분→자동 2분, 대량 민팅으로 성능 부하 데이터셋 확보</li>
+        <li><strong>BDD 기반 3단계 문서 체계</strong> — Feature → Scenario → Step 수립, Postman으로 블록체인 API 검증</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2020.10 — 2022.03</div>
+        <div class="exp-company">야놀자Tech<br><small>R&amp;D</small></div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-duration">1년 6개월</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>TC 부재 상태에서 전체 재정비</strong> — 데일리호텔 포인트·리뷰·결제수단 영역 TC 0에서 신규 작성 및 체계화</li>
+        <li><strong>회원가입 완료율 20%↑</strong> — 동등분할·경계값 분석으로 이탈 지점 식별, 결과를 마케팅·데이터 조직과 공유</li>
+        <li><strong>초기 결함 검출률 40%↑</strong> — 동치분할·경계값·상태전이 기법을 팀 표준으로 정착</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2016.12 — 2020.03</div>
+        <div class="exp-company">이우소프트<br><small>AI MedTech</small></div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-duration">3년 4개월</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>AI 의료 진단 소프트웨어 QA</strong> — FDA·식약처 인증 TC 설계, 2019 대한민국 SW 기술대상 수상 프로젝트 참여</li>
+        <li><strong>X-ray Detector 연동 검증</strong> — HW-SW 인터페이스 TC 설계, 무선 Detector 장비 양산 출시 지원</li>
+        <li><strong>3단계 품질 프로세스 수립</strong> — Alpha→Beta→FCS 단계별 TC 기준 정의, Selenium/Python 자동화 도입</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2012.07 — 2016.11</div>
+        <div class="exp-company">아이온커뮤니케이션즈<br><small>CMS 솔루션</small></div>
+        <div class="exp-role">QA Engineer</div>
+        <div class="exp-duration">4년 5개월</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>일본향 CMS 품질 관리</strong> — ISO 9126 기반 테스트 계획, 일본 시장 매출 1위 기간(2015~2016) 품질 담당</li>
+        <li><strong>비대면 계약 서식 e.Form io 검증</strong> — 온프레미스→AWS 전환, Agile 전환 시 QA 프로세스 재설계</li>
+        <li><strong>일본 고객 VOC 직접 대응 (70%)</strong> — 일본어 원문 번역·분석, PM·QA·기술 문서 작성 겸임</li>
+      </ul>
     </div>
 
   </div>
 </div>
 
+<div class="full-divider"></div>
+
+<!-- Projects -->
+<div class="section-wrap" id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">주요 프로젝트</h2>
+  <div class="projects-grid">
+    <div class="project-card fade-up">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">Full-Layer<br>Test Automation</div>
+      <div class="project-desc">
+        TC·자동화 전무 상태에서 3개 서비스 × 3계층(API·Web·Mobile) 969건 자동화 직접 구축. 배포 검증 2~3시간→1분, 수동 회귀 22시간/주 절감. 환경변수 중앙화로 3환경(Production/Preview/Beta) 동일 TC 실행.
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="work.html" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Details
+        </a>
+        <a class="project-link" href="https://github.com/yeonzoe/qa-portfolio" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">pytest</span>
+        <span class="project-tag">Playwright TS</span>
+        <span class="project-tag">Maestro</span>
+        <span class="project-tag">Appium</span>
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">Allure</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-icon">🤖</div>
+      <div class="project-title">AI-Driven QA<br>파이프라인</div>
+      <div class="project-desc">
+        TC 생성 6일→2.5일(58% 단축), 정확도 60%→80%. 3관점 검증(QA·BE·자동화) + TC-for-TC 23개 기준 자가검증 + UNCLEAR 3-Bucket 분류. Claude Code · MCP · 커스텀 Skill로 PRD 정제 → AI 초안 → QA Accept 워크플로우를 사내 플러그인(v2.4.0)으로 패키징.
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="work.html" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Details
+        </a>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Claude Code</span>
+        <span class="project-tag">MCP</span>
+        <span class="project-tag">AI-Driven QA</span>
+        <span class="project-tag">Spec-Driven Dev</span>
+        <span class="project-tag">TC Automation</span>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-icon">📊</div>
+      <div class="project-title">QA Management<br>Dashboard</div>
+      <div class="project-desc">
+        스프린트별 TC 현황 실시간 추적 + Allure 리포트 자동 생성/배포. 테스트 결과 공유 30분→0분(자동), Slack 알림으로 5분 내 대응. 최근 히스토리 트렌드, 서비스별/환경별/등급별 필터링.
+      </div>
+      <div class="project-links">
+        <a class="project-link" href="work.html" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Details
+        </a>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">GitHub Pages</span>
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">Sprint Sync</span>
+        <span class="project-tag">Slack</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- AI Native QA Toolkit -->
+<div class="section-wrap" id="toolkit">
+  <div class="section-label">AI Native QA</div>
+  <h2 class="section-title">QA Toolkit — 직접 설계·구현</h2>
+  <p class="toolkit-intro">
+    AI 보조 개발(vibe coding)로 코드 생산량이 폭증하는 환경에서, QA 공정 전반을 Claude Code 위에 직접 설계해 올렸습니다.
+    PRD 정제부터 TC 자동생성·자동화 코드 생성·회귀 영향 산출까지의 파이프라인을 <strong style="color:var(--text);">스킬·훅·서브에이전트</strong>로 구현하고,
+    사내 마켓플레이스 <strong style="color:var(--text);">플러그인(v2.4.0)</strong>으로 패키징해 팀이 설치·사용하는 제품으로 운영합니다.
+  </p>
+  <div class="toolkit-grid">
+
+    <div class="tk-card fade-up">
+      <div class="tk-head">
+        <div class="tk-icon">⚙</div>
+        <div class="tk-title">커스텀 Skills</div>
+        <span class="tk-count">27개</span>
+      </div>
+      <div class="tk-rows">
+        <div class="tk-row">
+          <span class="tk-cat">PRD→TC</span>
+          <span class="tk-items"><code>prd-refine</code> · <code>tc-generate</code> · <code>tc-from-prd</code> · <code>ask-stakeholder</code> · <code>tc-verify</code> — PRD 정제·UNCLEAR 분류 → 코드 확인 기반 TC 자동생성·검증</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">자동화 코드</span>
+          <span class="tk-items"><code>auto-api</code> · <code>auto-web</code> · <code>auto-scenario</code> · <code>sanity-orchestrator</code> — 실제 testID·엔드포인트 기반 Playwright/pytest/Maestro 코드 생성·통합 실행</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">영향·회귀</span>
+          <span class="tk-items"><code>impact-analysis</code> · <code>regression-scope</code> — 코드 변경 → 영향 TC 자동 매핑, PR diff → 회귀 범위 산출</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">워크플로우</span>
+          <span class="tk-items"><code>qa-workflow</code> — 모든 QA 작업에 적용되는 7단계(계획→구조→영향→구현→리뷰→검증→회고) 범용 프레임</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tk-card fade-up">
+      <div class="tk-head">
+        <div class="tk-icon">⚓</div>
+        <div class="tk-title">Hooks</div>
+        <span class="tk-count">12종</span>
+      </div>
+      <div class="tk-rows">
+        <div class="tk-row">
+          <span class="tk-cat">안전</span>
+          <span class="tk-items">Production CUD 차단(<code>skipOnProd</code> 강제) · TC drift 가드 · 대시보드 수정 워크플로우 강제</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">배포</span>
+          <span class="tk-items">배포 ID 고정(중복 배포 차단) · 버전 3곳 자동 동기화 · 배포 Slack 알림</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">품질</span>
+          <span class="tk-items">.spec.ts 저장 시 시니어 자동화 리뷰 알림 · GAS ESLint·문법 검사</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">협업</span>
+          <span class="tk-items">Slack 업무시간 즉시/야간 예약 전송 · 세션 종료 시 자동 회고</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tk-card fade-up">
+      <div class="tk-head">
+        <div class="tk-icon">⎇</div>
+        <div class="tk-title">서브에이전트</div>
+        <span class="tk-count">4종</span>
+      </div>
+      <div class="tk-rows">
+        <div class="tk-row">
+          <span class="tk-cat">FP 리뷰</span>
+          <span class="tk-items">CQRS·구조 제약 위반 탐지 — 잘못 구현된 것을 찾는 관점</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">FN 리뷰</span>
+          <span class="tk-items">누락된 규칙·엣지케이스·일관성 결여 탐지 — 빠진 것을 찾는 관점</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">자동화</span>
+          <span class="tk-items">Playwright/pytest/Maestro 안정성·대기 전략·선택자·격리 리뷰</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">시니어</span>
+          <span class="tk-items">.spec 작성·강화 시 flakiness 근원·공통 헬퍼·testID 우선 리뷰</span>
+        </div>
+      </div>
+      <div class="tk-note">FP/FN 두 관점을 병렬 실행해 과잉·누락을 동시 차단</div>
+    </div>
+
+    <div class="tk-card fade-up">
+      <div class="tk-head">
+        <div class="tk-icon">▦</div>
+        <div class="tk-title">Plugin &amp; MCP</div>
+        <span class="tk-count">v2.4.0</span>
+      </div>
+      <div class="tk-rows">
+        <div class="tk-row">
+          <span class="tk-cat">패키징</span>
+          <span class="tk-items">스킬·커맨드·훅을 사내 마켓플레이스 플러그인으로 패키징, 팀원이 설치·사용하는 제품으로 버전 관리</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">MCP 연동</span>
+          <span class="tk-items"><code>product-hub</code> MCP로 실제 BE 코드베이스·엔드포인트를 조회해 코드 기반 TC 정확도 향상</span>
+        </div>
+        <div class="tk-row">
+          <span class="tk-cat">환각 차단</span>
+          <span class="tk-items">AI 생성 산출물에 23개 기준 자가검증 + UNCLEAR 3-Bucket(문서/코드/사람) 분류로 PRD에 없는 내용 확정 기술 방지</span>
+        </div>
+      </div>
+      <div class="tk-note">TC 생성 공수 58%↓ (6일→2.5일) · 정확도 60%→80%</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- Certifications -->
+<div class="section-wrap" id="certs">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">자격</h2>
+  <div class="certs-grid">
+    <div class="cert-card fade-up">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-title">ISTQB CTFL</div>
+        <div class="cert-year">2018 · 국제 소프트웨어 테스팅 자격</div>
+      </div>
+    </div>
+    <div class="cert-card fade-up">
+      <div class="cert-icon">🌐</div>
+      <div>
+        <div class="cert-title">JLPT 2급 · OPIc 일본어 AL</div>
+        <div class="cert-year">업무 수준 일본어 구사</div>
+      </div>
+    </div>
+    <div class="cert-card fade-up">
+      <div class="cert-icon">📚</div>
+      <div>
+        <div class="cert-title">PMBOK 6.0 · BABOK 3.0 · Agile/Scrum</div>
+        <div class="cert-year">2018 · KOSTA 교육 수료</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-name">연향주</div>
+  <div class="footer-copy">© 2026 · Senior QA Engineer Portfolio</div>
+</footer>
+
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-document.querySelectorAll('.fade-cmd').forEach(el => observer.observe(el));
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-const tabs = document.querySelectorAll('.terminal-tab');
-const sections = ['whoami', 'skills', 'experience', 'projects'];
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top < 200) current = id;
+  // Hero stats auto-visible
+  document.querySelectorAll('#hero .fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 300 + i * 120);
   });
-  tabs.forEach(tab => {
-    const href = tab.getAttribute('href');
-    if (href === '#' + current) tab.classList.add('active');
-    else if (href.startsWith('#')) tab.classList.remove('active');
-  });
-});
 </script>
-
 </body>
 </html>

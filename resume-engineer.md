@@ -2,7 +2,7 @@
 
 **SENIOR QA ENGINEER · 13+ YEARS**
 
-- 📧 hjyeon@naver.com
+- 📧 hjyeon0917@gmail.com
 - 🐙 github.com/yeonzoe
 - 🔗 yeonzoe.github.io
 
@@ -10,10 +10,10 @@
 
 ## Summary
 
-테스트 설계 · 자동화 구현 · CI 품질 게이트 구축을 주 업무로 해온 QA 엔지니어.
-Playwright(TypeScript) · pytest · Maestro로 **969건** 자동화 직접 설계·구현, 3단계 CI 품질 게이트(Preview → Beta → Production) 구성.
-HTTP Toolkit · Flipper · Postman을 활용한 네트워크 계층 디버깅과 결함 재현에 능숙.
-Claude Code · Cursor · MCP 기반 QA 자동화 도구를 직접 설계하고 **플러그인으로 패키징해 팀에 배포·운영** — AI 보조 개발(vibe coding) 환경에서도 회귀 커버리지 유지 · 영향 범위 자동 산출로 품질 저하 방지.
+테스트 설계와 자동화, CI 품질 게이트 구축을 주로 해온 QA 엔지니어입니다.
+Playwright와 pytest, Maestro로 **969건**의 자동화를 직접 만들었고, Preview에서 Beta, Production으로 이어지는 3단계 CI 품질 게이트를 구성했습니다.
+HTTP Toolkit과 Flipper, Postman으로 네트워크 계층을 들여다보며 결함을 재현하는 일에 익숙합니다.
+Claude Code와 Cursor, MCP로 QA 자동화 도구를 만들어 사내 플러그인으로 묶어 팀에 배포했습니다. AI가 코드를 빠르게 쏟아내는 환경에서도 회귀 범위를 자동으로 잡아내 품질이 떨어지지 않게 합니다.
 
 ---
 
@@ -22,6 +22,7 @@ Claude Code · Cursor · MCP 기반 QA 자동화 도구를 직접 설계하고 *
 ### 직방 (ZIGBANG Co., Ltd) — QA Engineer
 `2024.07 — 현재`
 
+- **통합 검증 정착으로 Critical 결함 41%↓** — 스프린트 통합 검증 프로세스 확립 후 Critical(High+Urgent) 버그 17건 → 10건으로 감소, 배포 전 미해결 0건 유지 (4개 스프린트 처리율 100%)
 - **자동화 969건 직접 설계·구현** — Playwright(TypeScript) 웹 E2E **272**건 · pytest API **446**건 · Maestro 모바일 **251**건. ISO 25010 기반 11-컬럼 TC 표준 정의, 블랙박스 5기법(동등분할·경계값·결정테이블·상태전이·유스케이스) 전수 적용
 - **3단계 CI 품질 게이트 구축** — Preview → Beta → Production 각 단계 GitHub Actions 자동 트리거, Allure 리포트 자동 배포, Slack 장애 알림 연동
 - **네트워크 계층 디버깅 표준화** — HTTP Toolkit(HTTPS 프록시·요청/응답 재현) · Flipper(iOS·Android 네트워크·로그·스토리지) · Postman으로 결함 재현성 확보
@@ -81,7 +82,9 @@ Claude Code · Cursor · MCP 기반 QA 자동화 도구를 직접 설계하고 *
 | AI 워크플로우 | Claude Code · Cursor 이중 환경 QA 스킬 체계 운영 (커스텀 Skills 27개 · Slash Commands 30여 개 · Hooks 12종 직접 구현, 사내 마켓플레이스 플러그인 v2.4.0 패키징·배포), MCP 연동 (product-hub 코드베이스 분석 · Figma · Playwright), GitHub Copilot, Spec-Driven Development(OpenSpec), AI 보조 개발(vibe coding) 품질 보장 파이프라인 설계 |
 | CI / CD | GitHub Actions, Slack Webhook, Jenkins(기초), Preview/Beta/Production 멀티 스테이지 |
 | 언어 · 스택 | Python, TypeScript, JavaScript, SQL, Docker(기초), Git |
-| 도메인 | PropTech(부동산), 커머스(명품 · 여행 · 숙박), 핀테크(블록체인 · NFT 지갑), 의료 AI(FDA 규제), CMS(B2B) |
+| 도메인 | PropTech(부동산), 커머스(명품 · 여행 · 숙박), 핀테크(블록체인 · NFT 지갑), 의료 AI(FDA 규제), CMS(B2B 일본) |
+
+> **도메인 적응력** — 규제 도메인(의료 AI FDA·핀테크 블록체인)과 고속 성장 플랫폼(커머스·프롭테크)을 모두 경험하며 **어떤 환경에서도 빠르게 품질 프로세스를 셋업**. 일본향 CMS 품질 관리 경험 + 일본어(JLPT 2급·OPIc AL)로 **글로벌(일본 시장) 확장 QA·커뮤니케이션** 직접 대응.
 
 ---
 
